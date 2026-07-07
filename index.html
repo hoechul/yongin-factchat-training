@@ -186,12 +186,36 @@
   .tl-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; box-shadow: var(--shadow-sm); }
   .tl-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
   .tl-title { font-size: 1.12rem; font-weight: 800; color: var(--navy); }
+  a.tl-title { display: inline-flex; align-items: center; gap: 6px; transition: color .15s; }
+  a.tl-title::after { content: "↗"; font-size: .82rem; color: var(--blue); opacity: .7; }
+  a.tl-title.same::after { content: "↓"; }
+  a.tl-title:hover { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
   .tl-time { font-size: .78rem; font-weight: 800; color: var(--blue); background: var(--blue-soft); padding: 4px 12px; border-radius: 999px; white-space: nowrap; }
   .tl-body { margin-top: 12px; color: var(--slate); font-size: .96rem; }
   .tl-body ul { list-style: none; display: grid; gap: 8px; }
   .tl-body li { position: relative; padding-left: 20px; }
   .tl-body li::before { content: "›"; position: absolute; left: 2px; color: var(--blue); font-weight: 900; }
   .tl-hands { margin-top: 12px; display: inline-flex; align-items: center; gap: 8px; font-size: .86rem; font-weight: 700; color: #b45309; background: #fef3c7; padding: 6px 14px; border-radius: 999px; }
+  .tl-link-note { margin-top: 12px; font-size: .84rem; color: var(--slate-2); }
+  .tl-link-note a { color: var(--blue); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ===== 나쁜 vs 좋은 프롬프트 비교 ===== */
+  .cmp-head { margin-top: 16px; display: inline-flex; align-items: center; gap: 8px; font-size: .86rem; font-weight: 800; color: #b45309; background: #fef3c7; padding: 6px 14px; border-radius: 999px; }
+  .cmp { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+  @media (max-width: 640px){ .cmp { grid-template-columns: 1fr; } }
+  .cmp-col { border-radius: 13px; padding: 15px 16px; border: 1px solid var(--line); }
+  .cmp-bad { background: #fff6f6; border-color: #fecdd0; }
+  .cmp-good { background: #f1fdf6; border-color: #bbf0d0; }
+  .cmp-lbl { display: inline-flex; align-items: center; gap: 6px; font-size: .76rem; font-weight: 800; padding: 4px 11px; border-radius: 999px; }
+  .cmp-bad .cmp-lbl { color: #dc2626; background: #fee2e2; }
+  .cmp-good .cmp-lbl { color: #0a7b45; background: #dcfce7; }
+  .cmp-q { margin-top: 10px; font-size: .88rem; font-weight: 700; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 9px; padding: 10px 12px; line-height: 1.55; }
+  .cmp-q .br { color: #ca8a04; font-weight: 800; }
+  .cmp-good .cmp-q b { color: #12327a; }
+  .cmp-a { margin-top: 10px; font-size: .85rem; color: var(--slate); line-height: 1.55; }
+  .cmp-a .h { display: block; font-weight: 800; font-size: .74rem; letter-spacing: .03em; margin-bottom: 4px; }
+  .cmp-bad .cmp-a .h { color: #dc2626; }
+  .cmp-good .cmp-a .h { color: #0a7b45; }
 
   /* ===== Practice cards ===== */
   .practice { background: var(--navy); color: #fff; }
@@ -343,7 +367,7 @@
 
     <div class="hero-meta">
       <div class="meta-chip"><span class="ico">🏛️</span><div><div class="k">교육 대상</div><div class="v">용인시 전 직원</div></div></div>
-      <div class="meta-chip"><span class="ico">📅</span><div><div class="k">교육 일시</div><div class="v">2026. 7. 7.</div></div></div>
+      <div class="meta-chip"><span class="ico">📅</span><div><div class="k">교육 일시</div><div class="v">2026. 7. 8.</div></div></div>
       <div class="meta-chip"><span class="ico">⏱️</span><div><div class="k">교육 시간</div><div class="v">60분 완성</div></div></div>
       <div class="meta-chip"><span class="ico">📱</span><div><div class="k">진행 방식</div><div class="v">오프라인 + 실습</div></div></div>
     </div>
@@ -366,7 +390,7 @@
     <div class="grid-overview">
       <div class="ov-card reveal"><div class="ov-ico">📚</div><div class="ov-k">교육명</div><div class="ov-v">FactChat 실무 활용 역량 강화 교육</div><div class="ov-note">행정 업무, AI로 30분 단축하기</div></div>
       <div class="ov-card reveal"><div class="ov-ico">👥</div><div class="ov-k">대상</div><div class="ov-v">용인시 전 직원</div><div class="ov-note">부서별 회차 운영 권장</div></div>
-      <div class="ov-card reveal"><div class="ov-ico">🗓️</div><div class="ov-k">일시</div><div class="ov-v">2026년 7월 7일</div><div class="ov-note">예비 회차 별도 운영</div></div>
+      <div class="ov-card reveal"><div class="ov-ico">🗓️</div><div class="ov-k">일시</div><div class="ov-v">2026년 7월 8일</div><div class="ov-note">예비 회차 별도 운영</div></div>
       <div class="ov-card reveal"><div class="ov-ico">⏰</div><div class="ov-k">시간</div><div class="ov-v">총 60분</div><div class="ov-note">강의 35분 + 실습 20분 + Q&A 5분</div></div>
       <div class="ov-card reveal"><div class="ov-ico">🎤</div><div class="ov-k">방식</div><div class="ov-v">오프라인 강의</div><div class="ov-note">개인 휴대폰 실습</div></div>
       <div class="ov-card reveal"><div class="ov-ico">✅</div><div class="ov-k">준비물</div><div class="ov-v">스마트폰 · 계정</div><div class="ov-note">FactChat 계정 로그인 사전 완료</div></div>
@@ -497,7 +521,6 @@
           <div class="tl-top"><div class="tl-title">Opening — 왜 FactChat인가</div><span class="tl-time">5분</span></div>
           <div class="tl-body"><ul>
             <li>타 생성형 AI 대비 강점: 근거 인용 · 한국어 최적화 · 프로젝트 메모리</li>
-            <li>용인시 실제 활용 사례 3건 (보도자료 초안 / 민원 답변 / 조례 요약)</li>
           </ul></div>
         </div>
       </div>
@@ -505,33 +528,46 @@
       <div class="tl-item reveal">
         <div class="tl-num">②</div>
         <div class="tl-card">
-          <div class="tl-top"><div class="tl-title">Part 1. 크레딧을 아끼는 스마트한 사용법</div><span class="tl-time">10분</span></div>
+          <div class="tl-top"><a class="tl-title" href="handouts/factchat-guide" target="_blank" rel="noopener">Part 1. 크레딧을 아끼는 스마트한 사용법</a><span class="tl-time">10분</span></div>
           <div class="tl-body"><ul>
             <li>모델 선택 가이드: 요약·번역·정리 → 기본 / 정책 분석·보고서 → 상위 / 이미지·PPT → Super Agent</li>
             <li>긴 대화 관리: 프로젝트 기능으로 대화 분리, 컨텍스트 재사용</li>
             <li>실패한 프롬프트 재활용법 (수정 재생성 vs 새 대화)</li>
           </ul></div>
+          <p class="tl-link-note">👉 자세한 모델 선택·크레딧 절약 팁은 <a href="handouts/factchat-guide" target="_blank" rel="noopener">FactChat 1장 요약 가이드</a>에서 확인하세요.</p>
         </div>
       </div>
 
       <div class="tl-item reveal">
         <div class="tl-num">③</div>
         <div class="tl-card">
-          <div class="tl-top"><div class="tl-title">Part 2. 정확도를 높이는 프롬프트 3원칙</div><span class="tl-time">15분</span></div>
+          <div class="tl-top"><a class="tl-title" href="handouts/factchat-guide" target="_blank" rel="noopener">Part 2. 정확도를 높이는 프롬프트 3원칙</a><span class="tl-time">15분</span></div>
           <div class="tl-body"><ul>
             <li><b>역할 부여</b> — "당신은 지방자치법에 능통한 행정 전문가입니다"</li>
             <li><b>맥락 제공</b> — 부서·목적·독자·분량·톤 명시</li>
             <li><b>근거 요구</b> — "관련 법령 조항과 출처 URL을 함께 표기하세요"</li>
           </ul></div>
-          <div class="tl-hands">🎯 실습 · 나쁜 프롬프트 vs 좋은 프롬프트 응답 비교</div>
+          <div class="cmp-head">🎯 미니 실습 · 나쁜 프롬프트 vs 좋은 프롬프트</div>
+          <div class="cmp">
+            <div class="cmp-col cmp-bad">
+              <span class="cmp-lbl">✕ 나쁜 프롬프트</span>
+              <div class="cmp-q">"보도자료 하나 써줘."</div>
+              <div class="cmp-a"><span class="h">나오는 응답</span>주제·대상·수치가 없어 <b>일반론적인 빈칸투성이</b> 초안. 행사명·일시·장소를 AI가 임의로 지어내(환각) 결국 <b>처음부터 다시</b> 써야 함.</div>
+            </div>
+            <div class="cmp-col cmp-good">
+              <span class="cmp-lbl">✓ 좋은 프롬프트</span>
+              <div class="cmp-q"><b>당신은 용인시청 홍보 주무관</b>입니다. <span class="br">[행사 계획서]</span>를 바탕으로 <b>제목·리드·본문 3문단·문의처</b> 형식, <b>800자</b>, <b>공공기관 격식체</b>로 보도자료를 작성하세요. 수치는 계획서 <b>그대로</b>.</div>
+              <div class="cmp-a"><span class="h">나오는 응답</span>날짜·장소가 정확하고 격식체를 지킨 <b>바로 배포 가능한 완성형</b> 보도자료. 역할·맥락·근거를 지정해 <b>수정 없이 그대로</b> 활용.</div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="tl-item reveal">
         <div class="tl-num">④</div>
         <div class="tl-card">
-          <div class="tl-top"><div class="tl-title">Part 3. 행정 업무 시나리오 실습</div><span class="tl-time">20분</span></div>
-          <div class="tl-body">각자 휴대폰으로 실제 업무를 그대로 재현하는 핵심 세션입니다. 아래 실습 미션 참고 ↓</div>
+          <div class="tl-top"><a class="tl-title same" href="#practice">Part 3. 행정 업무 시나리오 실습</a><span class="tl-time">20분</span></div>
+          <div class="tl-body">각자 휴대폰으로 실제 업무를 그대로 재현하는 핵심 세션입니다. 아래 <a href="#practice" style="color:var(--blue);font-weight:700;text-decoration:underline;text-underline-offset:3px;">실습 미션</a> 참고 ↓</div>
           <div class="tl-hands">📱 개인 스마트폰 실습</div>
         </div>
       </div>
