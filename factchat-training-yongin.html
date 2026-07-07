@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FactChat 실무 활용 역량 강화 교육 — 사례 중심 실습형 (용인시)</title>
+<style>
+:root{--navy:#1a3a5c;--blue:#2b6cb0;--sky:#ebf4ff;--green:#2f855a;--greenbg:#f0fff4;--red:#c53030;--redbg:#fff5f5;--amber:#b7791f;--amberbg:#fffbeb;--gray:#4a5568;--border:#e2e8f0;--bg:#f7fafc}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif;background:var(--bg);color:#2d3748;line-height:1.7}
+.container{max-width:960px;margin:0 auto;padding:0 20px 80px}
+header{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;padding:64px 20px 56px;text-align:center}
+header .badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:4px 16px;font-size:13px;margin-bottom:16px}
+header h1{font-size:clamp(24px,4vw,36px);font-weight:800;margin-bottom:12px}
+header p{opacity:.9;font-size:16px}
+.section-label{color:var(--blue);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+h2{font-size:24px;font-weight:800;color:var(--navy);margin:56px 0 20px}
+h3{font-size:18px;font-weight:700;color:var(--navy);margin:28px 0 12px}
+.card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;font-size:14px}
+th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+td{padding:10px 14px;border-bottom:1px solid var(--border)}
+tr:last-child td{border-bottom:none}
+.tag{display:inline-block;border-radius:6px;padding:2px 10px;font-size:12px;font-weight:700;margin-right:6px}
+.tag.time{background:var(--sky);color:var(--blue)}
+.tag.light{background:var(--greenbg);color:var(--green)}
+.tag.heavy{background:var(--amberbg);color:var(--amber)}
+.prompt{position:relative;background:#1e293b;color:#e2e8f0;border-radius:10px;padding:18px 18px 18px;margin:14px 0;font-size:14px;white-space:pre-wrap;font-family:'Pretendard','Noto Sans KR',sans-serif;line-height:1.8}
+.prompt .copy-btn{position:absolute;top:10px;right:10px;background:var(--blue);color:#fff;border:none;border-radius:6px;padding:5px 14px;font-size:12px;font-weight:700;cursor:pointer;transition:background .2s}
+.prompt .copy-btn:hover{background:#2c5282}
+.prompt .copy-btn.copied{background:var(--green)}
+.tip{background:var(--sky);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:12px 16px;font-size:14px;margin:12px 0}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+@media(max-width:640px){.ba{grid-template-columns:1fr}}
+.ba .bad,.ba .good{border-radius:10px;padding:16px;font-size:14px}
+.ba .bad{background:var(--redbg);border:1px solid #feb2b2}
+.ba .good{background:var(--greenbg);border:1px solid #9ae6b4}
+.ba strong.label{display:block;margin-bottom:8px;font-size:13px}
+.ba .bad strong.label{color:var(--red)}
+.ba .good strong.label{color:var(--green)}
+.mission{border-left:4px solid var(--blue)}
+.mission h3{margin-top:0}
+.steps{counter-reset:step;list-style:none}
+.steps li{counter-increment:step;padding-left:36px;position:relative;margin-bottom:8px;font-size:15px}
+.steps li::before{content:counter(step);position:absolute;left:0;top:2px;width:24px;height:24px;background:var(--blue);color:#fff;border-radius:50%;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+footer{text-align:center;color:#a0aec0;font-size:13px;padding:32px 0}
+</style>
+</head>
+<body>
+
+<header>
+<span class="badge">사례 중심 실습형 · 60분</span>
+<h1>FactChat 실무 활용 역량 강화 교육</h1>
+<p>"행정 업무, AI로 30분 단축하기" — 복사해서 바로 쓰는 실습형 커리큘럼</p>
+</header>
+
+<div class="container">
+
+<div class="section-label" style="margin-top:48px">Timeline · 60min</div>
+<h2 style="margin-top:0">전체 타임라인</h2>
+<table>
+<tr><th style="width:110px">시간</th><th>세션</th><th style="width:160px">방식</th></tr>
+<tr><td>0~5분</td><td>① Opening — 30초 만에 체감하기</td><td>전원 따라하기</td></tr>
+<tr><td>5~15분</td><td>② Part 1. 크레딧 절약 — 같은 일, 1/5 비용</td><td>비교 시연 + 실습</td></tr>
+<tr><td>15~30분</td><td>③ Part 2. 프롬프트 3원칙 — Before/After</td><td>페어 실습</td></tr>
+<tr><td>30~50분</td><td>④ Part 3. 부서별 시나리오 미션 6종</td><td>개인 미션</td></tr>
+<tr><td>50~55분</td><td>⑤ 결과 공유 — "오늘 아낀 30분"</td><td>발표 2~3명</td></tr>
+<tr><td>55~60분</td><td>⑥ Q&amp;A + 배포자료 안내</td><td>—</td></tr>
+</table>
+
+<div class="section-label" style="margin-top:56px">Session ①</div>
+<h2 style="margin-top:0">Opening — 설명 대신 "즉시 체험" <span class="tag time">5분</span></h2>
+<div class="card">
+<p>슬라이드 설명 대신, 전원이 아래 프롬프트를 휴대폰으로 바로 입력합니다. 30초 만에 완성문이 나오는 것을 체감한 뒤 "오늘은 이걸 내 업무에 맞게 바꾸는 법을 배웁니다"로 연결합니다.</p>
+<div class="prompt"><button class="copy-btn">복사</button>당신은 용인시청 총무과 주무관입니다. "여름철 냉방온도 준수 협조" 내부 공지문을 공문 격식체로 5문장 이내로 작성해줘.</div>
+<div class="tip">🤖 FactChat 강점(근거 인용 · 한국어 최적화 · 프로젝트 메모리)은 결과물을 함께 보며 1분 내로 짚어줍니다.</div>
+</div>
+
+<div class="section-label" style="margin-top:56px">Session ②</div>
+<h2 style="margin-top:0">Part 1. 크레딧 절약 — 같은 작업, 모델만 바꿔보기 <span class="tag time">10분</span></h2>
+<div class="card">
+<h3 style="margin-top:0">사례 1 · 행사 안내문 20자 요약 <span class="tag light">기본 모델</span></h3>
+<ol class="steps">
+<li>강사가 화면에서 <strong>상위 모델</strong>로 실행 → 크레딧 소모량 표시</li>
+<li>수강생 전원은 <strong>기본(경량) 모델</strong>로 동일 실행 → 소모량 비교 (약 1/3~1/5)</li>
+</ol>
+<div class="prompt"><button class="copy-btn">복사</button>아래 행사 안내문을 시 홈페이지 배너용으로 20자 이내로 요약해줘.
+"용인시는 오는 7월 20일 오전 10시 용인미르스타디움에서 시민과 함께하는 제5회 용인시민 걷기대회를 개최합니다. 참가 신청은 7월 15일까지…"</div>
+<div class="tip">📌 <strong>모델 선택 기준 30초 정리</strong> — 오탈자 교정·요약·번역 → <b>기본</b> / 조례-상위법 충돌 검토·정책 분석 → <b>상위</b> / 이미지·PPT → <b>Super Agent</b></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">사례 2 · 프로젝트 기능 1분 시연</h3>
+<p>"우리 팀 보도자료" 프로젝트를 만들고 자주 쓰는 역할 문장을 저장 → 매번 입력하지 않아도 같은 톤이 유지되는 것을 시연합니다.</p>
+</div>
+
+<div class="section-label" style="margin-top:56px">Session ③</div>
+<h2 style="margin-top:0">Part 2. 프롬프트 3원칙 — Before/After 페어 실습 <span class="tag time">15분</span></h2>
+<div class="card">
+<h3 style="margin-top:0">사례 3 · 나쁜 프롬프트를 직접 겪어보기 (2인 1조)</h3>
+<div class="ba">
+<div class="bad"><strong class="label">✕ A가 입력 (Before)</strong>"보도자료 하나 써줘."<br><br>→ 행사명·날짜를 AI가 임의로 지어내는 <b>환각</b>을 직접 확인</div>
+<div class="good"><strong class="label">✓ B가 입력 (After)</strong>아래 좋은 프롬프트 사용<br><br>→ 두 결과를 옆 사람과 비교하며 차이를 체감</div>
+</div>
+<div class="prompt"><button class="copy-btn">복사</button>당신은 용인시청 홍보 주무관입니다. 아래 행사 계획을 바탕으로 제목·리드문·본문 3문단·문의처 형식, 800자, 공공기관 격식체로 보도자료를 작성하세요. 수치와 일시는 계획 내용 그대로 사용하고 임의로 추가하지 마세요.
+[행사 계획] 제5회 용인시민 걷기대회 / 7.20(월) 10시 / 용인미르스타디움 / 참가비 무료 / 선착순 2,000명 / 문의: 체육진흥과 031-000-0000</div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">사례 4 · 근거 요구로 환각 차단 <span class="tag light">웹 검색 ON</span></h3>
+<div class="prompt"><button class="copy-btn">복사</button>「폐기물관리법」 제8조(투기 금지)의 내용을 알려줘. 국가법령정보센터(law.go.kr) 원문을 근거로 하고, 인용 조문의 출처 URL을 함께 표기해줘.</div>
+<div class="tip">🔗 답변에 붙은 링크를 눌러 <strong>원문 대조</strong>까지 직접 해보게 합니다.</div>
+<p style="margin-top:12px"><strong>3원칙 정리(2분):</strong> ① 역할 부여 ② 맥락 제공(부서·목적·독자·분량·톤) ③ 근거 요구 — C.R.E.A.T.E. 6단계는 「1장 요약 가이드」로 안내</p>
+</div>
+
+<div class="section-label" style="margin-top:56px">Session ④</div>
+<h2 style="margin-top:0">Part 3. 부서별 시나리오 미션 6종 <span class="tag time">20분</span></h2>
+<p style="margin-bottom:16px">본인 업무와 가장 가까운 미션 <b>2개</b>를 골라 <b>[대괄호]</b>만 바꿔 실행합니다. 프롬프트 모음 페이지 QR을 띄워 복사하게 하세요.</p>
+
+<div class="card mission">
+<h3>미션 1 · 문서작성 — 공문 초안 <span class="tag light">기본 모델</span></h3>
+<div class="prompt"><button class="copy-btn">복사</button>당신은 용인시청 [○○과] 주무관입니다. [수신처: 관내 경로당 35개소]에 발송할 "[폭염 대비 냉방기 점검 협조]" 공문 초안을 표준 공문 형식(수신·제목·본문·붙임)으로 작성해줘.</div>
+</div>
+
+<div class="card mission">
+<h3>미션 2 · 법령/조례 — 상위법 충돌 검토 <span class="tag heavy">상위 모델 + 웹 검색</span></h3>
+<div class="prompt"><button class="copy-btn">복사</button>당신은 지방자치법에 능통한 행정 전문가입니다. "[용인시 ○○ 지원 조례안]"의 아래 조항이 [상위법: ○○법]과 충돌하는지 검토하고, 관련 법령 조항과 출처 URL을 표기해줘.
+[조항 내용 붙여넣기]</div>
+</div>
+
+<div class="card mission">
+<h3>미션 3 · 민원 — 답변서 작성 <span class="tag light">기본 모델</span></h3>
+<div class="prompt"><button class="copy-btn">복사</button>당신은 용인시청 [○○과] 민원 담당자입니다. 아래 민원에 대해 공감 표현 → 처리 경과 → 향후 계획 순서로, 정중한 격식체 500자 이내 답변서를 작성해줘.
+[민원 내용: 아파트 앞 불법투기 쓰레기가 2주째 방치되어 있습니다…]</div>
+</div>
+
+<div class="card mission">
+<h3>미션 4 · 보고서 — 1페이지 요약보고 <span class="tag heavy">상위 모델</span></h3>
+<div class="prompt"><button class="copy-btn">복사</button>당신은 [기획팀] 주무관입니다. 아래 자료를 국장 보고용 1페이지 요약보고(개요·현황·문제점·개선방안·건의사항)로 정리해줘. 개조식으로 작성해줘.
+[자료 붙여넣기]</div>
+</div>
+
+<div class="card mission">
+<h3>미션 5 · 회의록 — 녹취 정리 <span class="tag light">기본 모델</span></h3>
+<div class="prompt"><button class="copy-btn">복사</button>아래 회의 메모를 회의록 형식(일시·참석자·안건·결정사항·향후 일정)으로 정리하고, 결정사항은 담당자·기한을 표로 만들어줘.
+[메모 붙여넣기]</div>
+</div>
+
+<div class="card mission">
+<h3>미션 6 · 데이터 — 표 만들기·통계 해석 <span class="tag light">기본 모델</span></h3>
+<div class="prompt"><button class="copy-btn">복사</button>아래 민원 접수 현황 데이터를 유형별로 집계한 표로 만들고, 전월 대비 증감이 큰 상위 3개 유형과 시사점을 3줄로 요약해줘.
+[데이터 붙여넣기]</div>
+</div>
+
+<div class="tip">🎯 <strong>진행 팁</strong> — 미션 1·3·5·6은 기본 모델, 미션 2·4는 상위 모델로 지정해 Part 1의 <b>모델 선택 전략을 실전 반복</b>시킵니다.</div>
+
+<div class="section-label" style="margin-top:56px">Session ⑤·⑥</div>
+<h2 style="margin-top:0">결과 공유 &amp; Closing <span class="tag time">10분</span></h2>
+<div class="card">
+<h3 style="margin-top:0">⑤ 결과 공유 — "오늘 아낀 30분" (5분)</h3>
+<p>2~3명이 자기 결과물을 화면에 띄워 발표합니다. "이 작업을 원래 몇 분 걸려 했는지 vs 지금 몇 분 걸렸는지"를 말하게 하여 교육명("30분 단축")을 회수합니다.</p>
+</div>
+<div class="card">
+<h3 style="margin-top:0">⑥ Closing (5분)</h3>
+<ul style="padding-left:20px">
+<li><strong>배포자료:</strong> 1장 요약 가이드 + 프롬프트 6종 별첨 (QR 안내)</li>
+<li><strong>실천 과제:</strong> "내일 출근해서 오늘 미션 프롬프트 중 1개를 실제 업무에 적용"</li>
+<li>사내 문의 채널 · 후속 심화교육 안내</li>
+</ul>
+</div>
+
+</div>
+
+<footer>FactChat 실무 활용 역량 강화 교육 · 용인시 · 2026.07</footer>
+
+<script>
+document.querySelectorAll('.copy-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const text=btn.parentElement.innerText.replace(/^복사\n?/,'').replace(/^복사됨!\n?/,'').trim();
+    navigator.clipboard.writeText(text).then(()=>{
+      btn.textContent='복사됨!';btn.classList.add('copied');
+      setTimeout(()=>{btn.textContent='복사';btn.classList.remove('copied')},1500);
+    });
+  });
+});
+</script>
+</body>
+</html>
