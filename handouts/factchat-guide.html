@@ -99,9 +99,12 @@
   .attach .promptbox { margin-top:4px; font-size:7.7pt; }
   .attach .promptbox.no { background:#3a1414; color:#ffd9d9; }
   .attach .promptbox.no b { color:#ff9d9d; }
-  .case-ref { display:flex; align-items:center; gap:7px; margin-top:8px; font-size:8.7pt; font-weight:800; color:#0b1f4d; background:#eef3ff; border:1px solid #cfe0ff; border-left:3px solid #1e5eff; border-radius:7px; padding:7px 10px; }
-  .case-ref .cn { flex:none; width:17px; height:17px; border-radius:5px; background:#1e5eff; color:#fff; font-size:8.2pt; display:grid; place-items:center; }
+  html { scroll-behavior:smooth; }
+  .case-ref { display:flex; align-items:center; gap:7px; margin-top:8px; font-size:8.7pt; font-weight:800; color:#0b1f4d; background:#eef3ff; border:1px solid #cfe0ff; border-left:3px solid #1e5eff; border-radius:7px; padding:7px 10px; text-decoration:none; }
+  a.case-ref { cursor:pointer; transition:background .15s, border-color .15s; }
+  a.case-ref:hover { background:#e2ebff; border-color:#9cc0ff; }
   .case-ref .sub { font-size:7pt; font-weight:700; color:#1e5eff; margin-left:auto; white-space:nowrap; }
+  :target > .sc-head { box-shadow:0 0 0 3px #ffd479; }
 </style>
 </head>
 <body>
@@ -124,8 +127,8 @@
       <ul style="margin-top:7px;">
         <li>단순 작업에 경량 모델만 써도 <b>크레딧 3~5배 절약</b></li>
       </ul>
-      <div class="case-ref"><span class="cn">1</span> 20쪽 정책보고서 다듬기 — 경량·상위 모델 나눠 쓰기<span class="sub">▷ 실습 케이스</span></div>
-      <div class="case-ref" style="margin-top:6px;"><span class="cn">4</span> 긴 대화 분리 — 프로젝트로 주제 나누고 컨텍스트 재사용</div>
+      <a class="case-ref" href="#case1">20쪽 정책보고서 다듬기 — 경량·상위 모델 나눠 쓰기<span class="sub">▷ 실습 케이스 보기</span></a>
+      <div class="case-ref" style="margin-top:6px;">긴 대화 분리 — 프로젝트로 주제 나누고 컨텍스트 재사용<span class="sub">↓ 바로 아래 예시</span></div>
       <div class="attach">
         <div class="ah bad">✖ 한 대화에 여러 주제 (맥락이 계속 딸려와 크레딧↑)</div>
         <div class="promptbox no">(보도자료 20번 주고받은 대화에서) 그런데 <b>이번엔 주차 조례가 상위법과 충돌하는지</b> 검토해줘.</div>
@@ -134,7 +137,7 @@
         <div class="ah" style="margin-top:5px;">✔ ② 이후에는 검토할 조례만 짧게 입력 (앞 맥락 재사용)</div>
         <div class="promptbox">「용인시 주차장 설치 및 관리 조례」 제3조를 검토해줘.</div>
       </div>
-      <div class="case-ref" style="margin-top:6px;"><span class="cn">5</span> 재활용 — "수정 재생성"으로 고치고, 주제 바뀌면 "새 대화"<span class="sub">▷ 실습 케이스</span></div>
+      <a class="case-ref" href="#case5" style="margin-top:6px;">재활용 — "수정 재생성"으로 고치고, 주제 바뀌면 "새 대화"<span class="sub">▷ 실습 케이스 보기</span></a>
     </div>
 
     <!-- 프롬프트 3원칙 -->
@@ -145,7 +148,7 @@
         <div class="principle"><div class="h">② 맥락 제공</div><div class="b">부서·목적·독자·분량·톤을 명시</div></div>
         <div class="principle"><div class="h">③ 근거 요구</div><div class="b">"관련 법령 조항과 출처 URL을 함께 표기"</div></div>
       </div>
-      <div class="case-ref"><span class="cn">2</span> 주민 공고문 작성 — 프롬프트 3원칙 적용하기<span class="sub">▷ 실습 케이스</span></div>
+      <a class="case-ref" href="#case2">주민 공고문 작성 — 프롬프트 3원칙 적용하기<span class="sub">▷ 실습 케이스 보기</span></a>
     </div>
   </div>
 
@@ -160,7 +163,7 @@
       <div class="step"><div class="L">T</div><div class="w">Tone</div><div class="d">톤·문체<br>"공문 격식체"</div></div>
       <div class="step"><div class="L">E</div><div class="w">Evaluation</div><div class="d">검증 요구<br>"근거·출처 표기"</div></div>
     </div>
-    <div class="case-ref"><span class="cn">3</span> 보도자료 초안 작성 — C.R.E.A.T.E. 6요소 한 번에 지정하기<span class="sub">▷ 실습 케이스</span></div>
+    <a class="case-ref" href="#case3">보도자료 초안 작성 — C.R.E.A.T.E. 6요소 한 번에 지정하기<span class="sub">▷ 실습 케이스 보기</span></a>
   </div>
 
   <div class="cols" style="margin-top:10px;">
@@ -190,14 +193,13 @@
   <!-- ===== 상세 실습 케이스 (따라 하기) ===== -->
   <div class="page2">
     <header>
-      <div class="title">바로 따라 하는 실습 케이스<small>케이스 1·2·3·5 상세 (케이스 4 「긴 대화 분리」는 앞 요약 페이지 참고) · 예시 자료와 프롬프트를 그대로 복사해 사용하세요</small></div>
+      <div class="title">바로 따라 하는 실습 케이스<small>앞 요약의 「▷ 실습 케이스 보기」에서 이어지는 상세 예시 · 자료와 프롬프트를 그대로 복사해 사용하세요</small></div>
       <div class="badge">따라 하기 가이드</div>
     </header>
 
     <!-- CASE 1 : 모델 분업으로 크레딧 절약 -->
-    <div class="card full" style="margin-top:10px;">
+    <div class="card full" style="margin-top:10px;" id="case1">
       <div class="sc-head" style="border-radius:7px;">
-        <span class="no">1</span>
         <span class="tt">20쪽 정책보고서 다듬기 — 경량·상위 모델 나눠 쓰기</span>
         <span class="min">약 10분</span>
       </div>
@@ -238,9 +240,8 @@
     </div>
 
     <!-- CASE 2 : 3원칙 적용 프롬프트 -->
-    <div class="card full" style="margin-top:10px;">
+    <div class="card full" style="margin-top:10px;" id="case2">
       <div class="sc-head" style="border-radius:7px;">
-        <span class="no">2</span>
         <span class="tt">주민 공고문 작성 — 프롬프트 3원칙 적용하기</span>
         <span class="min">약 3분</span>
       </div>
@@ -273,9 +274,8 @@
     </div>
 
     <!-- CASE 3 : C.R.E.A.T.E. 6요소로 보도자료 초안 -->
-    <div class="card full" style="margin-top:10px;">
+    <div class="card full" style="margin-top:10px;" id="case3">
       <div class="sc-head" style="border-radius:7px;">
-        <span class="no">3</span>
         <span class="tt">보도자료 초안 작성 — C.R.E.A.T.E. 6요소 한 번에 지정하기</span>
         <span class="min">약 5분</span>
       </div>
@@ -310,9 +310,8 @@
     </div>
 
     <!-- CASE 5 : 재활용 — 수정 재생성 vs 새 대화 -->
-    <div class="card full" style="margin-top:10px;">
+    <div class="card full" style="margin-top:10px;" id="case5">
       <div class="sc-head" style="border-radius:7px;">
-        <span class="no">5</span>
         <span class="tt">재활용 — "수정 재생성"으로 고치고, 주제 바뀌면 "새 대화"</span>
         <span class="min">상시 습관</span>
       </div>
