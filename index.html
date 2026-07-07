@@ -285,7 +285,7 @@
   /* ===== Prompt Library ===== */
   .pl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px; }
   @media (max-width: 760px){ .pl-grid { grid-template-columns: 1fr; } }
-  .pl-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; transition: transform .18s, box-shadow .18s; }
+  .pl-card { position: relative; display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; transition: transform .18s, box-shadow .18s; }
   .pl-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
   .pl-head { display: flex; align-items: center; gap: 12px; padding: 15px 18px; background: linear-gradient(135deg, var(--navy), var(--navy-2)); color: #fff; }
   .pl-badge { flex: none; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-weight: 900; font-size: 1rem; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.28); }
@@ -297,6 +297,18 @@
   .pl-copy { display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px; border-radius: 999px; font-weight: 700; font-size: .85rem; cursor: pointer; background: var(--blue-soft); color: var(--navy-2); border: 1.5px solid transparent; transition: background .15s, color .15s, transform .15s; }
   .pl-copy:hover { background: var(--blue); color: #fff; transform: translateY(-1px); }
   .pl-copy.done { background: var(--green); color: #fff; }
+
+  /* ===== 공통: 우측 상단 복사 버튼 ===== */
+  .has-copy { position: relative; }
+  .pr-prompt.has-copy { padding-top: 38px; }
+  .cmp-q.has-copy { padding-top: 36px; }
+  .copy-btn { position: absolute; top: 8px; right: 8px; z-index: 3; display: inline-flex; align-items: center; gap: 5px; padding: 5px 12px; border-radius: 999px; font-size: .74rem; font-weight: 800; line-height: 1; cursor: pointer; border: 1px solid transparent; transition: background .15s, color .15s, transform .15s; }
+  .copy-btn:hover { transform: translateY(-1px); }
+  .copy-btn.done { background: var(--green) !important; color: #fff !important; border-color: transparent !important; }
+  .copy-btn.dark { background: rgba(255,255,255,.15); color: #fff; border-color: rgba(255,255,255,.3); }
+  .copy-btn.dark:hover { background: rgba(255,255,255,.3); }
+  .copy-btn.light { background: var(--blue-soft); color: var(--navy-2); }
+  .copy-btn.light:hover { background: var(--blue); color: #fff; }
 
   /* ===== Guide ① 구성안 ===== */
   .g1-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 8px; }
@@ -347,7 +359,7 @@
       <a href="#curriculum">커리큘럼</a>
       <a href="#practice">실습</a>
       <a href="#handout">배포자료</a>
-      <a href="#prompt-lib">프롬프트</a>
+      <a href="handouts/factchat-prompts.html" target="_blank" rel="noopener">프롬프트 ↗</a>
     </div>
     <a href="#handout" class="nav-cta">배포자료</a>
   </div>
@@ -556,7 +568,7 @@
             </div>
             <div class="cmp-col cmp-good">
               <span class="cmp-lbl">✓ 좋은 프롬프트</span>
-              <div class="cmp-q"><b>당신은 용인시청 홍보 주무관</b>입니다. <span class="br">[행사 계획서]</span>를 바탕으로 <b>제목·리드·본문 3문단·문의처</b> 형식, <b>800자</b>, <b>공공기관 격식체</b>로 보도자료를 작성하세요. 수치는 계획서 <b>그대로</b>.</div>
+              <div class="cmp-q has-copy"><button type="button" class="copy-btn light">복사</button><b>당신은 용인시청 홍보 주무관</b>입니다. <span class="br">[행사 계획서]</span>를 바탕으로 <b>제목·리드·본문 3문단·문의처</b> 형식, <b>800자</b>, <b>공공기관 격식체</b>로 보도자료를 작성하세요. 수치는 계획서 <b>그대로</b>.</div>
               <div class="cmp-a"><span class="h">나오는 응답</span>날짜·장소가 정확하고 격식체를 지킨 <b>바로 배포 가능한 완성형</b> 보도자료. 역할·맥락·근거를 지정해 <b>수정 없이 그대로</b> 활용.</div>
             </div>
           </div>
@@ -575,8 +587,8 @@
       <div class="tl-item reveal">
         <div class="tl-num" style="font-size:1rem;">3-1</div>
         <div class="tl-card">
-          <div class="tl-top"><a class="tl-title same" href="#prompt-lib">Part 3-1. 행정 특화 예시 프롬프트 모음</a><span class="tl-time">별첨</span></div>
-          <div class="tl-body">업무 유형별 대표 프롬프트 <b>6종</b>입니다. <b>복사</b> 버튼을 눌러 FactChat에 붙여넣고, <b>[대괄호]</b> 부분만 실제 내용으로 바꿔 바로 사용하세요. 아래 <a href="#prompt-lib" style="color:var(--blue);font-weight:700;text-decoration:underline;text-underline-offset:3px;">프롬프트 모음</a> 참고 ↓</div>
+          <div class="tl-top"><a class="tl-title" href="handouts/factchat-prompts.html" target="_blank" rel="noopener">Part 3-1. 행정 특화 예시 프롬프트 모음</a><span class="tl-time">별첨</span></div>
+          <div class="tl-body">업무 유형별 대표 프롬프트 <b>6종</b>입니다. <b>복사</b> 버튼을 눌러 FactChat에 붙여넣고, <b>[대괄호]</b> 부분만 실제 내용으로 바꿔 바로 사용하세요. <a href="handouts/factchat-prompts.html" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700;text-decoration:underline;text-underline-offset:3px;">프롬프트 모음 페이지 열기 ↗</a></div>
           <div class="tl-hands">🗂️ 문서작성 · 법령/조례 · 민원 · 보고서 · 회의록 · 데이터</div>
         </div>
       </div>
@@ -613,7 +625,7 @@
         <div class="pr-lb">📌 이런 상황</div>
         <div class="pr-situ">다음 주 <b>「반려동물 문화교실」</b> 행사 보도자료를 오늘 안에 넘겨야 함. 손에 있는 건 <b>기안문·계획서</b>뿐.</div>
         <div class="pr-lb">✍️ 복사용 프롬프트</div>
-        <div class="pr-prompt">당신은 <b>용인시청 홍보담당 주무관</b>입니다. <span class="br">[첨부: 행사 계획서]</span>를 바탕으로 <b>보도자료</b>를 작성하세요. 형식은 <b>제목 → 리드 1문단 → 본문 3문단 → 문의처</b>, 분량 <b>800자 내외</b>, <b>공공기관 격식체</b>로 쓰고, 일시·장소·대상은 계획서 수치를 <b>그대로</b> 쓰되 지어내지 마세요.</div>
+        <div class="pr-prompt has-copy"><button type="button" class="copy-btn dark">복사</button>당신은 <b>용인시청 홍보담당 주무관</b>입니다. <span class="br">[첨부: 행사 계획서]</span>를 바탕으로 <b>보도자료</b>를 작성하세요. 형식은 <b>제목 → 리드 1문단 → 본문 3문단 → 문의처</b>, 분량 <b>800자 내외</b>, <b>공공기관 격식체</b>로 쓰고, 일시·장소·대상은 계획서 수치를 <b>그대로</b> 쓰되 지어내지 마세요.</div>
         <div class="pr-result"><div class="rh">✅ 나오는 결과</div><ul>
           <li>바로 배포 가능한 완성형 보도자료 1건</li>
           <li>이어서 "제목 5안 더 뽑아줘", "카드뉴스 6장으로" 확장</li>
@@ -629,7 +641,7 @@
         <div class="pr-lb">📌 이런 상황</div>
         <div class="pr-situ">신규 <b>조례안</b>을 검토 중. 핵심을 빠르게 파악하고 <b>다른 시·군은 어떤지</b> 비교해 보고서에 넣어야 함.</div>
         <div class="pr-lb">✍️ 복사용 프롬프트</div>
-        <div class="pr-prompt">당신은 <b>지방자치법에 능통한 행정 전문가</b>입니다. <span class="br">[아래 조례안 붙여넣기]</span>의 핵심을 <b>목적·주요조항·시행일</b>로 요약하고, 유사 조례를 둔 <b>[수원시·성남시·화성시]</b>와 우리 안(案)을 <b>비교표</b>로 정리하세요. 각 항목은 <b>근거 조문 번호와 출처 URL</b>을 함께 표기하세요.</div>
+        <div class="pr-prompt has-copy"><button type="button" class="copy-btn dark">복사</button>당신은 <b>지방자치법에 능통한 행정 전문가</b>입니다. <span class="br">[아래 조례안 붙여넣기]</span>의 핵심을 <b>목적·주요조항·시행일</b>로 요약하고, 유사 조례를 둔 <b>[수원시·성남시·화성시]</b>와 우리 안(案)을 <b>비교표</b>로 정리하세요. 각 항목은 <b>근거 조문 번호와 출처 URL</b>을 함께 표기하세요.</div>
         <div class="pr-result"><div class="rh">✅ 나오는 결과</div><ul>
           <li>3줄 요약 + 4개 시 비교표(항목·근거·출처)</li>
           <li>이어서 "상위법과 충돌 없는지 검토해줘"로 리스크 점검</li>
@@ -645,7 +657,7 @@
         <div class="pr-lb">📌 이런 상황</div>
         <div class="pr-situ">규정대로 쓴 답변이 <b>너무 딱딱해</b> 민원인이 더 화날 것 같음. 규정은 그대로, <b>말투만</b> 부드럽게.</div>
         <div class="pr-lb">✍️ 복사용 프롬프트</div>
-        <div class="pr-prompt">아래는 민원 답변 초안입니다. <b>인용한 규정·조치사항은 그대로 유지</b>하되, <b>공감 → 설명 → 대안 → 마무리</b> 순서의 <b>친절한 공감형 톤</b>으로 다시 써주세요. 첫 문장은 반드시 <b>민원인의 불편에 공감</b>하는 인사로 시작하세요. <span class="br">[초안 붙여넣기]</span></div>
+        <div class="pr-prompt has-copy"><button type="button" class="copy-btn dark">복사</button>아래는 민원 답변 초안입니다. <b>인용한 규정·조치사항은 그대로 유지</b>하되, <b>공감 → 설명 → 대안 → 마무리</b> 순서의 <b>친절한 공감형 톤</b>으로 다시 써주세요. 첫 문장은 반드시 <b>민원인의 불편에 공감</b>하는 인사로 시작하세요. <span class="br">[초안 붙여넣기]</span></div>
         <div class="pr-result"><div class="rh">✅ 나오는 결과</div><ul>
           <li>규정 근거는 유지 + 말투만 부드러워진 답변</li>
           <li>이어서 "불가 요청이면 대안까지 넣어 거절 답변으로"</li>
@@ -661,7 +673,7 @@
         <div class="pr-lb">📌 이런 상황</div>
         <div class="pr-situ">1시간 회의가 끝났고 손메모만 잔뜩. <b>누가·언제까지 뭘</b> 하기로 했는지 표로 정리해 공유해야 함.</div>
         <div class="pr-lb">✍️ 복사용 프롬프트</div>
-        <div class="pr-prompt">다음 회의 메모를 <b>①안건 ②주요 논의 ③결정사항 ④실행과제</b>로 정리하세요. <b>실행과제는 담당자·기한·우선순위(상/중/하) 표</b>로 만들고, 담당·기한이 메모에 <b>없으면 '미정'</b>으로 표기하세요. <span class="br">[회의 메모 붙여넣기]</span></div>
+        <div class="pr-prompt has-copy"><button type="button" class="copy-btn dark">복사</button>다음 회의 메모를 <b>①안건 ②주요 논의 ③결정사항 ④실행과제</b>로 정리하세요. <b>실행과제는 담당자·기한·우선순위(상/중/하) 표</b>로 만들고, 담당·기한이 메모에 <b>없으면 '미정'</b>으로 표기하세요. <span class="br">[회의 메모 붙여넣기]</span></div>
         <div class="pr-result"><div class="rh">✅ 나오는 결과</div><ul>
           <li>구조화된 회의록 + 실행과제 표(담당/기한/우선순위)</li>
           <li>이어서 "이 표를 팀 공유용 안내 문자로"까지 확장</li>
@@ -724,83 +736,6 @@
   </div>
 </section>
 
-<!-- 배포자료 ② 예시 프롬프트 모음 -->
-<section class="block" id="prompt-lib">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-tag">별첨 · 배포자료 ②</span>
-      <h2 class="sec-title">행정 특화 예시 프롬프트 모음</h2>
-      <p class="sec-desc">업무 유형별 대표 프롬프트 6종입니다. <strong>복사</strong> 버튼을 눌러 FactChat에 붙여넣고, <b>[대괄호]</b> 부분만 실제 내용으로 바꿔 바로 사용하세요.</p>
-    </div>
-    <div class="pl-grid">
-
-      <div class="pl-card reveal">
-        <div class="pl-head"><span class="pl-badge">A</span><span class="pl-em">📄</span><span class="pl-title">문서 작성</span></div>
-<div class="pl-body"><b class="k">[역할]</b> 당신은 용인시청 공보담당관실 주무관입니다.
-<b class="k">[맥락]</b> 아래 사업 내용을 시민 대상 보도자료로 작성합니다. 대상 독자는 40~60대 시민이며, 친근하지만 신뢰감 있는 어조를 사용합니다.
-<b class="k">[작업]</b> 다음 사업 내용을 800자 내외 보도자료로 작성해 주세요.
-<b class="k">[출력]</b> 제목(15자 내) / 부제 / 리드문 / 본문 3단락 / 문의처 순
-<b class="k">[근거]</b> 인용한 통계나 정책은 출처를 각주로 표기
-<b class="k">[사업내용]</b> (붙여넣기)</div>
-        <div class="pl-foot"><button type="button" class="pl-copy">복사</button></div>
-      </div>
-
-      <div class="pl-card reveal">
-        <div class="pl-head"><span class="pl-badge">B</span><span class="pl-em">⚖️</span><span class="pl-title">법령·조례 검토</span></div>
-<div class="pl-body">당신은 지방자치법과 조례 입안에 능통한 법제 전문가입니다.
-아래 조례안을 검토하고 다음을 표로 정리해 주세요.
-1) 상위법 저촉 여부 (근거 조항 명시)
-2) 타 지자체 유사 조례 3건 비교
-3) 예상 쟁점 및 보완 제안
-반드시 국가법령정보센터 링크와 함께 답변해 주세요.
-<b class="k">[조례안 원문]</b> (붙여넣기)</div>
-        <div class="pl-foot"><button type="button" class="pl-copy">복사</button></div>
-      </div>
-
-      <div class="pl-card reveal">
-        <div class="pl-head"><span class="pl-badge">C</span><span class="pl-em">📞</span><span class="pl-title">민원 답변</span></div>
-<div class="pl-body">당신은 공감 능력이 뛰어난 용인시청 민원 담당 주무관입니다.
-아래 민원에 대한 답변서를 작성하되,
-- 첫 문단은 민원인의 불편에 공감
-- 두 번째 문단은 관련 규정과 처리 절차 안내(근거 조항 포함)
-- 마지막 문단은 대안 제시 및 후속 안내
-- 존댓말, 딱딱하지 않은 행정 문체 사용
-<b class="k">[민원 내용]</b> (붙여넣기)</div>
-        <div class="pl-foot"><button type="button" class="pl-copy">복사</button></div>
-      </div>
-
-      <div class="pl-card reveal">
-        <div class="pl-head"><span class="pl-badge">D</span><span class="pl-em">📊</span><span class="pl-title">보고서·기획</span></div>
-<div class="pl-body">당신은 15년차 정책기획 전문가입니다.
-아래 주제로 국·과장 보고용 1페이지 요약 보고서를 작성해 주세요.
-구성: ①추진배경 ②현황·문제점 ③추진방안(3개) ④소요예산·일정 ⑤기대효과
-각 항목 3줄 이내, 개조식으로 작성.
-<b class="k">[주제]</b> (입력)</div>
-        <div class="pl-foot"><button type="button" class="pl-copy">복사</button></div>
-      </div>
-
-      <div class="pl-card reveal">
-        <div class="pl-head"><span class="pl-badge">E</span><span class="pl-em">🗂️</span><span class="pl-title">회의·업무 정리</span></div>
-<div class="pl-body">아래 회의록을 다음 형식으로 정리해 주세요.
-1) 핵심 결정사항 (불릿 5개 이내)
-2) 실행과제 표: [과제 | 담당부서 | 기한 | 우선순위]
-3) 다음 회의 안건 후보 3가지
-<b class="k">[회의록]</b> (붙여넣기)</div>
-        <div class="pl-foot"><button type="button" class="pl-copy">복사</button></div>
-      </div>
-
-      <div class="pl-card reveal">
-        <div class="pl-head"><span class="pl-badge">F</span><span class="pl-em">🔍</span><span class="pl-title">자료 조사·비교</span></div>
-<div class="pl-body">"2025년 기초지자체 AI 도입 우수사례"를 웹에서 검색하여 용인시가 벤치마킹할 만한 5개 사례를 표로 정리해 주세요.
-컬럼: [지자체 | 도입분야 | 도입시기 | 주요 성과 | 예산규모 | 출처URL]
-반드시 1차 출처(보도자료, 공식 발표) 링크 포함.</div>
-        <div class="pl-foot"><button type="button" class="pl-copy">복사</button></div>
-      </div>
-
-    </div>
-    <p class="dl-note">※ 더 많은 예시는 「행정 프롬프트 30선」 배포자료를 참고하세요. 답변의 법령·수치는 반드시 담당자가 최종 확인하세요.</p>
-  </div>
-</section>
 
 <footer>
   <div class="wrap foot-inner">
@@ -822,23 +757,30 @@
     io.observe(el);
   });
 
-  // 프롬프트 복사
-  document.querySelectorAll('.pl-copy').forEach((btn) => {
+  // 프롬프트 복사 (우측 상단 복사 버튼)
+  async function copyText(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (_) {
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+  }
+  function flashCopied(btn) {
+    if (!btn.dataset.label) btn.dataset.label = btn.textContent;
+    btn.classList.add('done'); btn.textContent = '✓ 복사됨';
+    setTimeout(() => { btn.classList.remove('done'); btn.textContent = btn.dataset.label; }, 1600);
+  }
+  document.querySelectorAll('.copy-btn').forEach((btn) => {
     btn.addEventListener('click', async () => {
-      const body = btn.closest('.pl-card').querySelector('.pl-body');
-      const text = body.innerText.trim();
-      try {
-        await navigator.clipboard.writeText(text);
-      } catch (_) {
-        const ta = document.createElement('textarea');
-        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-        document.body.appendChild(ta); ta.select();
-        try { document.execCommand('copy'); } catch (e) {}
-        document.body.removeChild(ta);
-      }
-      if (!btn.dataset.label) btn.dataset.label = btn.textContent;
-      btn.classList.add('done'); btn.textContent = '✓ 복사됨';
-      setTimeout(() => { btn.classList.remove('done'); btn.textContent = btn.dataset.label; }, 1600);
+      const box = btn.parentElement;
+      const clone = box.cloneNode(true);
+      clone.querySelectorAll('.copy-btn, .no-copy').forEach((n) => n.remove());
+      await copyText(clone.innerText.trim());
+      flashCopied(btn);
     });
   });
 </script>
