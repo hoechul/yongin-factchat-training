@@ -53,6 +53,11 @@
   .principle .h { font-size:9pt; font-weight:800; color:#12327a; }
   .principle .b { font-size:8pt; color:#3c4a63; margin-top:3px; }
   .goto { display:block; margin-top:7px; font-size:7.8pt; font-weight:700; color:#1e5eff; background:#eaf0ff; border:1px dashed #9cc0ff; border-radius:7px; padding:5px 8px; text-align:center; }
+  .ex { margin-top:7px; background:#f7f9ff; border:1px solid #dbe6ff; border-left:3px solid #1e5eff; border-radius:6px; padding:6px 9px; font-size:7.9pt; line-height:1.5; color:#3c4a63; }
+  .ex .lb { font-weight:800; color:#12327a; font-size:7.3pt; margin-right:2px; }
+  .ex b { color:#12327a; } .ex .bad { color:#c02626; font-weight:700; } .ex .good { color:#0a7b45; font-weight:700; }
+  .ex .out { display:block; margin-top:3px; padding-top:3px; border-top:1px dashed #cdd9ef; }
+  .ex .out b { color:#0a7b45; }
 
   /* 실습 시나리오 상세 페이지 */
   .page2 { page-break-before: always; margin-top:16px; }
@@ -105,6 +110,9 @@
         <li><b>재활용</b> — 실패한 답변은 "수정 재생성", 주제가 바뀌면 "새 대화"</li>
         <li>단순 작업에 경량 모델만 써도 <b>크레딧 3~5배 절약</b></li>
       </ul>
+      <div class="ex"><span class="lb">📌 예시</span> 20쪽 보고서 작업 시 <span class="bad">전체를 상위 모델로(×)</span> 돌리지 말고, <b>오탈자·문단 정리</b>는 <span class="good">경량 모델</span>로 먼저 하고 <b>정책 논리 검토</b>만 상위 모델로.
+        <span class="out">→ 같은 결과에 크레딧 소모 <b>절반 이하</b>, 월말 소진 없이 사용</span>
+      </div>
     </div>
 
     <!-- 프롬프트 3원칙 -->
@@ -114,6 +122,9 @@
         <div class="principle"><div class="h">① 역할 부여</div><div class="b">"당신은 지방자치법에 능통한 행정 전문가입니다"</div></div>
         <div class="principle"><div class="h">② 맥락 제공</div><div class="b">부서·목적·독자·분량·톤을 명시</div></div>
         <div class="principle"><div class="h">③ 근거 요구</div><div class="b">"관련 법령 조항과 출처 URL을 함께 표기"</div></div>
+      </div>
+      <div class="ex"><span class="lb">📌 예시(3원칙 적용)</span> "당신은 <b>지방자치법에 능통한 행정 전문가</b>입니다<span class="good">(①역할)</span>. <b>주민 대상 공고문</b>을 <b>쉬운 말 500자</b>로 작성하고<span class="good">(②맥락)</span>, 인용한 <b>조례 조항과 출처 URL</b>을 표기하세요<span class="good">(③근거)</span>."
+        <span class="out">→ <span class="bad">"공고문 써줘"</span>보다 정확도·신뢰도가 크게 향상, 재작성 불필요</span>
       </div>
     </div>
   </div>
@@ -130,9 +141,10 @@
       <div class="step"><div class="L">E</div><div class="w">Evaluation</div><div class="d">검증 요구<br>"근거·출처 표기"</div></div>
     </div>
     <div class="prompt-ex">
-      <b>예시 프롬프트 ▸</b> "당신은 <b>용인시청 기획팀 주무관</b>입니다.(Role) 첨부한 회의 내용을 바탕으로(Context·Example)
+      <b>📌 예시 프롬프트 ▸</b> "당신은 <b>용인시청 기획팀 주무관</b>입니다.(Role) 첨부한 회의 내용을 바탕으로(Context·Example)
       <b>보도자료 초안</b>을 <b>3문단·800자 내외</b>로 작성하되(Action), <b>공공기관 보도자료 격식체</b>로 쓰고(Tone),
       인용한 통계는 <b>출처 URL</b>을 함께 표기하세요.(Evaluation)"
+      <span style="display:block; margin-top:5px; padding-top:5px; border-top:1px dashed rgba(255,255,255,.25); color:#7dd3fc;">→ 6요소를 한 번에 지정해 <b style="color:#fff;">재작성 없이 바로 배포 가능한</b> 초안이 나옵니다.</span>
     </div>
   </div>
 
