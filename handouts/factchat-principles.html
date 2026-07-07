@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>정확도를 높이는 프롬프트 3원칙 | 용인시 FactChat 교육</title>
+<meta name="description" content="용인시 FactChat 교육 Part 2 실습 — 역할 부여·맥락 제공·근거 요구 3원칙을 없을 때 vs 있을 때 예시와 복사용 프롬프트로 직접 연습합니다." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy:#0b1f4d; --navy-2:#12327a; --blue:#1e5eff; --blue-soft:#eaf0ff; --sky:#38bdf8;
+    --ink:#0f172a; --slate:#475569; --slate-2:#64748b; --line:#e2e8f0; --bg:#f6f8fc; --green:#10b981; --radius:18px;
+    --shadow-sm:0 1px 2px rgba(15,23,42,.06),0 4px 16px rgba(15,23,42,.05); --shadow-md:0 10px 40px rgba(11,31,77,.10);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Noto Sans KR',-apple-system,sans-serif; color:var(--ink); background:var(--bg); line-height:1.65; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { max-width:1080px; margin:0 auto; padding:0 24px; }
+
+  /* top bar */
+  .topbar { position:sticky; top:0; z-index:50; background:rgba(255,255,255,.85); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+  .topbar-inner { display:flex; align-items:center; justify-content:space-between; height:60px; }
+  .topbar-left { display:flex; align-items:center; gap:12px; }
+  .topbar-logo { height:30px; width:auto; display:block; }
+  .back { display:inline-flex; align-items:center; gap:8px; font-weight:800; font-size:.92rem; color:var(--navy); }
+  .back:hover { color:var(--blue); }
+  .topbar .tag { font-size:.8rem; font-weight:700; color:var(--slate-2); }
+
+  /* hero */
+  .hero { background:radial-gradient(900px 500px at 85% -10%,rgba(56,189,248,.14),transparent 55%),radial-gradient(700px 420px at 5% 10%,rgba(30,94,255,.10),transparent 55%),#fff; padding:52px 0 34px; border-bottom:1px solid var(--line); }
+  .eyebrow { display:inline-flex; align-items:center; gap:8px; background:var(--blue-soft); border:1px solid #d6e2ff; padding:7px 15px; border-radius:999px; font-size:.8rem; font-weight:700; color:var(--blue); }
+  .eyebrow .pip { width:7px; height:7px; border-radius:50%; background:var(--blue); box-shadow:0 0 10px rgba(30,94,255,.5); }
+  h1 { margin:20px 0 14px; font-size:clamp(1.8rem,4.4vw,2.8rem); font-weight:900; letter-spacing:-.02em; line-height:1.2; color:var(--navy); }
+  .hero p { font-size:1.05rem; color:var(--slate); max-width:720px; }
+  .hero p b { color:var(--navy); }
+
+  /* principle intro chips */
+  .prin-row { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:24px; }
+  @media (max-width:680px){ .prin-row { grid-template-columns:1fr; } }
+  .prin-chip { display:flex; align-items:center; gap:12px; background:#fff; border:1px solid var(--line); border-radius:14px; padding:13px 15px; box-shadow:var(--shadow-sm); }
+  .prin-chip .n { flex:none; width:30px; height:30px; border-radius:9px; background:linear-gradient(135deg,var(--blue),var(--sky)); color:#fff; font-weight:900; display:grid; place-items:center; }
+  .prin-chip .t { font-size:.98rem; font-weight:800; color:var(--navy); }
+  .prin-chip .s { font-size:.78rem; color:var(--slate-2); }
+
+  /* principle cards */
+  .cards { display:grid; gap:20px; padding:38px 0 10px; }
+  .pc { position:relative; background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:28px 26px; box-shadow:var(--shadow-sm); transition:transform .18s,box-shadow .18s; }
+  .pc:hover { transform:translateY(-3px); box-shadow:var(--shadow-md); }
+  .pc-head { display:flex; align-items:center; gap:14px; }
+  .pc-num { flex:none; width:40px; height:40px; border-radius:12px; background:linear-gradient(135deg,var(--blue),var(--sky)); color:#fff; font-weight:900; font-size:1.15rem; display:grid; place-items:center; }
+  .pc-tt { font-size:1.3rem; font-weight:900; color:var(--navy); letter-spacing:-.01em; }
+  .pc-sub { margin-top:12px; font-size:.95rem; color:var(--slate); }
+  .pc-sub b { color:var(--navy); font-weight:700; }
+
+  /* before / after compare */
+  .cmp { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:18px; }
+  @media (max-width:680px){ .cmp { grid-template-columns:1fr; } }
+  .cmp-col { border-radius:14px; padding:15px 16px; border:1px solid var(--line); }
+  .cmp-bad { background:#fef4f4; border-color:#f7d4d4; }
+  .cmp-good { background:#f2f8f4; border-color:#cfe9d8; }
+  .cmp-lbl { font-size:.74rem; font-weight:800; letter-spacing:.03em; }
+  .cmp-bad .cmp-lbl { color:#c0392b; }
+  .cmp-good .cmp-lbl { color:#0a7b45; }
+  .cmp-q { margin-top:8px; font-size:.9rem; line-height:1.55; color:var(--ink); }
+  .cmp-q b { color:var(--navy-2); font-weight:700; }
+  .cmp-note { margin-top:9px; font-size:.82rem; color:var(--slate); line-height:1.5; }
+  .cmp-note b { color:var(--navy); font-weight:700; }
+
+  /* copy fragment */
+  .frag-lb { font-size:.74rem; font-weight:800; letter-spacing:.04em; color:var(--blue); margin:20px 0 6px; }
+  .frag { position:relative; background:#f7f9ff; border:1px solid #dbe6ff; border-left:3px solid var(--blue); border-radius:12px; padding:38px 15px 14px; font-size:.9rem; line-height:1.62; color:var(--ink); }
+  .frag b { color:var(--navy-2); font-weight:700; }
+  .frag .br { color:#ca8a04; font-weight:700; }
+
+  /* checklist inside card */
+  .chk { list-style:none; margin-top:16px; display:grid; gap:6px; }
+  .chk li { position:relative; padding-left:26px; font-size:.88rem; color:var(--slate); line-height:1.55; }
+  .chk li::before { content:"✓"; position:absolute; left:0; top:0; color:var(--green); font-weight:900; }
+  .chk li b { color:var(--navy); font-weight:700; }
+
+  /* copy button (light) */
+  .copy-btn { position:absolute; top:8px; right:8px; z-index:3; display:inline-flex; align-items:center; gap:5px; padding:5px 12px; border-radius:999px; font-size:.74rem; font-weight:800; line-height:1; cursor:pointer; border:1px solid transparent; background:var(--blue-soft); color:var(--navy-2); transition:background .15s,color .15s,transform .15s; }
+  .copy-btn:hover { background:var(--blue); color:#fff; transform:translateY(-1px); }
+  .copy-btn.done { background:var(--green); color:#fff; }
+
+  /* combined prompt */
+  .combo { margin-top:40px; background:linear-gradient(135deg,#0b1f4d,#12327a); border-radius:var(--radius); padding:32px 28px; color:#fff; box-shadow:var(--shadow-md); }
+  .combo h2 { font-size:1.35rem; font-weight:900; letter-spacing:-.01em; }
+  .combo p { margin-top:8px; font-size:.95rem; color:#cdd8f5; }
+  .combo-box { position:relative; margin-top:20px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.18); border-left:3px solid var(--sky); border-radius:12px; padding:42px 16px 16px; font-size:.92rem; line-height:1.72; color:#eef3ff; }
+  .combo-box .r1 { color:#8fd3ff; font-weight:800; }
+  .combo-box .r2 { color:#ffd98a; font-weight:800; }
+  .combo-box .r3 { color:#9dffc4; font-weight:800; }
+  .combo-box .br { color:#ffd98a; font-weight:700; }
+  .combo-box b { color:#fff; font-weight:700; }
+  .combo .copy-btn { background:rgba(255,255,255,.16); color:#fff; }
+  .combo .copy-btn:hover { background:var(--sky); color:var(--navy); }
+  .combo-tag { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+  .combo-tag span { font-size:.76rem; font-weight:800; padding:5px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.22); color:#dbe6ff; }
+
+  /* flow */
+  .flow-head { text-align:center; margin:52px 0 22px; }
+  .flow-head .t { font-size:1.25rem; font-weight:800; color:var(--navy); }
+  .flow-head .d { margin-top:8px; font-size:.95rem; color:var(--slate); }
+  .flow { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  @media (max-width:680px){ .flow { grid-template-columns:1fr; } }
+  .fs { background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px; box-shadow:var(--shadow-sm); transition:transform .18s,box-shadow .18s; }
+  .fs:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); }
+  .fs .fn { width:28px; height:28px; border-radius:9px; background:linear-gradient(135deg,var(--blue),var(--sky)); color:#fff; font-weight:800; font-size:.9rem; display:grid; place-items:center; }
+  .fs .fw { margin-top:12px; font-size:1.02rem; font-weight:800; color:var(--navy); }
+  .fs .fd { margin-top:6px; font-size:.85rem; color:var(--slate); line-height:1.5; }
+  .hint { margin-top:26px; text-align:center; font-size:.86rem; color:var(--slate-2); }
+  .hint b { color:var(--navy); } .hint .br { color:#ca8a04; font-weight:700; }
+
+  .next { margin-top:40px; display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; }
+  .next a { display:inline-flex; align-items:center; gap:8px; font-weight:800; font-size:.92rem; padding:12px 20px; border-radius:12px; }
+  .next .primary { background:var(--blue); color:#fff; }
+  .next .primary:hover { background:var(--navy-2); }
+  .next .ghost { border:1px solid var(--line); color:var(--navy); background:#fff; }
+  .next .ghost:hover { border-color:var(--blue); color:var(--blue); }
+
+  footer { border-top:1px solid var(--line); padding:34px 0; margin-top:56px; }
+  .foot-inner { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; color:var(--slate-2); }
+  .foot-brand { color:var(--navy); font-weight:800; }
+  footer .small { font-size:.84rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="topbar-left">
+      <img class="topbar-logo" src="../LOGO02.png" alt="FactChat 로고" />
+      <a class="back" href="../index.html">← FactChat 교육 페이지</a>
+    </div>
+    <span class="tag">Part 2 · 프롬프트 3원칙</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="pip"></span> Hands-on · 15min · 정확도 UP</span>
+    <h1>정확도를 높이는 프롬프트 3원칙</h1>
+    <p>같은 AI라도 <b>어떻게 물어보느냐</b>에 따라 결과가 완전히 달라집니다. 아래 <b>역할 부여 · 맥락 제공 · 근거 요구</b> 3원칙을 <b>없을 때 vs 있을 때</b> 예시로 직접 비교하고, 파란 상자를 복사해 바로 연습해 보세요.</p>
+
+    <div class="prin-row">
+      <div class="prin-chip"><span class="n">1</span><div><div class="t">역할 부여</div><div class="s">누구로서 답할지 지정</div></div></div>
+      <div class="prin-chip"><span class="n">2</span><div><div class="t">맥락 제공</div><div class="s">부서·목적·독자·분량·톤</div></div></div>
+      <div class="prin-chip"><span class="n">3</span><div><div class="t">근거 요구</div><div class="s">법령 조항·출처 URL 표기</div></div></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="cards">
+
+    <!-- 원칙 1 -->
+    <div class="pc">
+      <div class="pc-head">
+        <div class="pc-num">1</div>
+        <div class="pc-tt">역할 부여</div>
+      </div>
+      <div class="pc-sub">AI에게 <b>"누구로서" 답할지</b> 먼저 지정하세요. 전문가 역할을 부여하면 어휘·관점·깊이가 그 분야 담당자 수준으로 맞춰집니다.</div>
+
+      <div class="cmp">
+        <div class="cmp-col cmp-bad">
+          <span class="cmp-lbl">✕ 역할이 없을 때</span>
+          <div class="cmp-q">"조례안 검토해줘."</div>
+          <div class="cmp-note">일반 상식 수준의 <b>두루뭉술한 답변</b>. 법적 관점·용어가 빠져 실무에 바로 못 씀.</div>
+        </div>
+        <div class="cmp-col cmp-good">
+          <span class="cmp-lbl">✓ 역할을 부여할 때</span>
+          <div class="cmp-q"><b>"당신은 지방자치법에 능통한 행정 전문가입니다."</b></div>
+          <div class="cmp-note">상위법 충돌·소관 부서·절차까지 <b>실무 관점</b>으로 짚어주는 답변.</div>
+        </div>
+      </div>
+
+      <div class="frag-lb">✍️ 복사해서 앞에 붙이세요</div>
+      <div class="frag"><button type="button" class="copy-btn">복사</button>당신은 <b>지방자치법에 능통한 행정 전문가</b>입니다. 아래 요청을 해당 분야 담당자의 관점에서, 관련 법령과 행정 절차를 고려해 처리하세요.</div>
+
+      <ul class="chk">
+        <li><b>직무를 구체적으로</b> — "행정 전문가"보다 "지방자치법에 능통한 행정 전문가"</li>
+        <li>홍보·법무·감사·복지 등 <b>업무에 맞는 역할</b>로 바꿔 재사용</li>
+      </ul>
+    </div>
+
+    <!-- 원칙 2 -->
+    <div class="pc">
+      <div class="pc-head">
+        <div class="pc-num">2</div>
+        <div class="pc-tt">맥락 제공</div>
+      </div>
+      <div class="pc-sub">AI는 <b>내 상황을 모릅니다.</b> <b>부서·목적·독자·분량·톤</b> 다섯 가지를 알려주면 초안이 곧 완성본이 됩니다.</div>
+
+      <div class="cmp">
+        <div class="cmp-col cmp-bad">
+          <span class="cmp-lbl">✕ 맥락이 없을 때</span>
+          <div class="cmp-q">"보도자료 하나 써줘."</div>
+          <div class="cmp-note">행사명·수치를 AI가 <b>임의로 지어내고</b>(환각), 분량·격식이 안 맞아 <b>처음부터 다시</b>.</div>
+        </div>
+        <div class="cmp-col cmp-good">
+          <span class="cmp-lbl">✓ 맥락을 제공할 때</span>
+          <div class="cmp-q"><b>부서·목적·독자·분량·톤</b>을 함께 명시</div>
+          <div class="cmp-note">독자와 상황에 딱 맞는 <b>바로 배포 가능한</b> 초안.</div>
+        </div>
+      </div>
+
+      <div class="frag-lb">✍️ 이 5가지를 채워 붙이세요</div>
+      <div class="frag"><button type="button" class="copy-btn">복사</button><b>[부서]</b> <span class="br">용인시청 홍보담당관</span> / <b>[목적]</b> <span class="br">「반려동물 문화교실」 행사 홍보</span> / <b>[독자]</b> <span class="br">지역 언론·시민</span> / <b>[분량]</b> <span class="br">800자 내외</span> / <b>[톤]</b> <span class="br">공공기관 격식체</span> 조건에 맞춰 작성하세요.</div>
+
+      <ul class="chk">
+        <li><b>부서·목적·독자·분량·톤</b> — 다섯 칸을 습관처럼 채우기</li>
+        <li>참고 자료(계획서·초안)는 <b>붙여넣거나 첨부</b>하면 정확도가 급상승</li>
+      </ul>
+    </div>
+
+    <!-- 원칙 3 -->
+    <div class="pc">
+      <div class="pc-head">
+        <div class="pc-num">3</div>
+        <div class="pc-tt">근거 요구</div>
+      </div>
+      <div class="pc-sub">가장 중요한 원칙입니다. <b>근거를 함께 요구</b>하면 AI가 지어내기(환각)를 줄이고, 우리는 <b>출처를 열어 교차 확인</b>할 수 있습니다.</div>
+
+      <div class="cmp">
+        <div class="cmp-col cmp-bad">
+          <span class="cmp-lbl">✕ 근거를 안 물으면</span>
+          <div class="cmp-q">"이 내용 관련 규정 알려줘."</div>
+          <div class="cmp-note">그럴듯하지만 <b>존재하지 않는 조항</b>을 인용할 위험. 확인할 방법도 없음.</div>
+        </div>
+        <div class="cmp-col cmp-good">
+          <span class="cmp-lbl">✓ 근거를 요구하면</span>
+          <div class="cmp-q"><b>"관련 법령 조항과 출처 URL을 함께 표기하세요."</b></div>
+          <div class="cmp-note">조문 번호·출처 링크가 붙어 <b>직접 열어 검증</b> 가능.</div>
+        </div>
+      </div>
+
+      <div class="frag-lb">✍️ 요청 끝에 붙이세요</div>
+      <div class="frag"><button type="button" class="copy-btn">복사</button>각 항목은 <b>관련 법령·조례의 조문 번호와 출처 URL</b>을 함께 표기하세요. 확인되지 않는 내용은 <b>지어내지 말고 '확인 필요'</b>로 표시하세요.</div>
+
+      <ul class="chk">
+        <li>법령·통계가 걸리면 <b>웹검색 ON</b> 후 링크를 직접 열어 확인</li>
+        <li>"<b>확인되지 않으면 확인 필요로 표시</b>"를 붙이면 환각이 크게 줄어듦</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- 세 원칙 합친 완성 프롬프트 -->
+  <div class="combo">
+    <h2>🎯 세 원칙을 하나로 — 완성 프롬프트</h2>
+    <p>역할 → 맥락 → 근거 순서로 이으면 이렇게 됩니다. 그대로 복사해 <span style="color:#ffd98a;font-weight:700;">노란 글씨</span>만 바꿔 보세요.</p>
+    <div class="combo-box">
+      <button type="button" class="copy-btn">복사</button>
+      <span class="r1">당신은 지방자치법에 능통한 행정 전문가</span>입니다.
+      <span class="r2">[부서] <span class="br">용인시청 홍보담당관</span>에서 [목적] <span class="br">신규 조례안</span>을 [독자] <span class="br">간부 보고용</span>으로 [분량] <span class="br">A4 1장</span>, [톤] <span class="br">공공기관 격식체</span></span>로 요약·정리하세요.
+      정리 시 <span class="r3">관련 법령·조례의 조문 번호와 출처 URL을 함께 표기</span>하고, 확인되지 않는 내용은 <b>'확인 필요'</b>로 표시하세요. <span class="br">[아래 조례안 붙여넣기]</span>
+    </div>
+    <div class="combo-tag">
+      <span>① 역할 부여</span><span>② 맥락 제공</span><span>③ 근거 요구</span>
+    </div>
+  </div>
+
+  <!-- 3단계 순서 -->
+  <div class="flow-head">
+    <div class="t">🧩 어떤 업무든 통하는 3단계 조립 순서</div>
+    <div class="d">이 순서대로 문장을 이어 붙이기만 하면 됩니다.</div>
+  </div>
+  <div class="flow">
+    <div class="fs"><span class="fn">1</span><div class="fw">역할부터</div><div class="fd">"당신은 ○○ 전문가입니다"로 시작</div></div>
+    <div class="fs"><span class="fn">2</span><div class="fw">맥락 채우기</div><div class="fd">부서·목적·독자·분량·톤 5칸 명시</div></div>
+    <div class="fs"><span class="fn">3</span><div class="fw">근거 요구</div><div class="fd">"조문 번호·출처 URL 표기" 붙이기</div></div>
+  </div>
+  <p class="hint">파란 상자를 그대로 복사해 붙여넣고, <span class="br">노란 글씨(부서·목적 등)</span>와 <b>[대괄호]</b> 부분만 실제 내용으로 바꾸세요.</p>
+
+  <div class="next">
+    <a class="primary" href="factchat-practice.html">다음 → Part 3. 행정 업무 시나리오 실습 ↗</a>
+    <a class="ghost" href="factchat-prompts.html">행정 특화 예시 프롬프트 모음 ↗</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>
+      <div class="foot-brand">용인시 FactChat 활용 역량 강화 교육</div>
+      <div class="small">Part 2 · 정확도를 높이는 프롬프트 3원칙</div>
+    </div>
+    <div class="small">© 2026 용인시 · FactChat 교육 기획안</div>
+  </div>
+</footer>
+
+<script>
+  async function copyText(text) {
+    try { await navigator.clipboard.writeText(text); }
+    catch (_) {
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+  }
+  document.querySelectorAll('.copy-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const box = btn.parentElement;
+      const clone = box.cloneNode(true);
+      clone.querySelectorAll('.copy-btn, .no-copy').forEach((n) => n.remove());
+      await copyText(clone.innerText.trim());
+      if (!btn.dataset.label) btn.dataset.label = btn.textContent;
+      btn.classList.add('done'); btn.textContent = '✓ 복사됨';
+      setTimeout(() => { btn.classList.remove('done'); btn.textContent = btn.dataset.label; }, 1600);
+    });
+  });
+</script>
+</body>
+</html>
