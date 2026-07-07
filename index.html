@@ -212,6 +212,22 @@
   .dl-ghost:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-2px); }
   .dl-note { margin-top: 14px; text-align: center; font-size: .84rem; color: var(--slate-2); }
 
+  /* ===== Prompt Library ===== */
+  .pl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px; }
+  @media (max-width: 760px){ .pl-grid { grid-template-columns: 1fr; } }
+  .pl-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; transition: transform .18s, box-shadow .18s; }
+  .pl-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .pl-head { display: flex; align-items: center; gap: 12px; padding: 15px 18px; background: linear-gradient(135deg, var(--navy), var(--navy-2)); color: #fff; }
+  .pl-badge { flex: none; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-weight: 900; font-size: 1rem; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.28); }
+  .pl-em { font-size: 1.2rem; }
+  .pl-title { font-weight: 800; font-size: 1.02rem; letter-spacing: -.2px; }
+  .pl-body { flex: 1; margin: 0; padding: 16px 18px; font-size: .855rem; line-height: 1.72; color: var(--slate); white-space: pre-wrap; word-break: keep-all; border-bottom: 1px dashed var(--line); }
+  .pl-body b.k { color: var(--blue); font-weight: 700; }
+  .pl-foot { display: flex; justify-content: flex-end; padding: 12px 16px; }
+  .pl-copy { display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px; border-radius: 999px; font-weight: 700; font-size: .85rem; cursor: pointer; background: var(--blue-soft); color: var(--navy-2); border: 1.5px solid transparent; transition: background .15s, color .15s, transform .15s; }
+  .pl-copy:hover { background: var(--blue); color: #fff; transform: translateY(-1px); }
+  .pl-copy.done { background: var(--green); color: #fff; }
+
   /* ===== CTA ===== */
   .cta {
     background: linear-gradient(135deg, var(--blue), var(--navy-2));
@@ -245,6 +261,7 @@
       <a href="#curriculum">커리큘럼</a>
       <a href="#practice">실습</a>
       <a href="#handout">배포자료</a>
+      <a href="#prompt-lib">프롬프트</a>
     </div>
     <a href="#cta" class="nav-cta">신청 안내</a>
   </div>
@@ -266,7 +283,7 @@
       <div class="meta-chip"><span class="ico">🏛️</span><div><div class="k">교육 대상</div><div class="v">용인시 전 직원</div></div></div>
       <div class="meta-chip"><span class="ico">📅</span><div><div class="k">교육 일시</div><div class="v">2026. 7. 7.</div></div></div>
       <div class="meta-chip"><span class="ico">⏱️</span><div><div class="k">교육 시간</div><div class="v">60분 완성</div></div></div>
-      <div class="meta-chip"><span class="ico">📱</span><div><div class="k">진행 방식</div><div class="v">오프라인 + BYOD 실습</div></div></div>
+      <div class="meta-chip"><span class="ico">📱</span><div><div class="k">진행 방식</div><div class="v">오프라인 + 실습</div></div></div>
     </div>
 
     <div class="hero-actions">
@@ -289,7 +306,7 @@
       <div class="ov-card reveal"><div class="ov-ico">👥</div><div class="ov-k">대상</div><div class="ov-v">용인시 전 직원</div><div class="ov-note">부서별 회차 운영 권장</div></div>
       <div class="ov-card reveal"><div class="ov-ico">🗓️</div><div class="ov-k">일시</div><div class="ov-v">2026년 7월 7일</div><div class="ov-note">예비 회차 별도 운영</div></div>
       <div class="ov-card reveal"><div class="ov-ico">⏰</div><div class="ov-k">시간</div><div class="ov-v">총 60분</div><div class="ov-note">강의 35분 + 실습 20분 + Q&A 5분</div></div>
-      <div class="ov-card reveal"><div class="ov-ico">🎤</div><div class="ov-k">방식</div><div class="ov-v">오프라인 강의</div><div class="ov-note">개인 휴대폰 실습(BYOD)</div></div>
+      <div class="ov-card reveal"><div class="ov-ico">🎤</div><div class="ov-k">방식</div><div class="ov-v">오프라인 강의</div><div class="ov-note">개인 휴대폰 실습</div></div>
       <div class="ov-card reveal"><div class="ov-ico">✅</div><div class="ov-k">준비물</div><div class="ov-v">스마트폰 · 계정</div><div class="ov-note">FactChat 계정 로그인 사전 완료</div></div>
     </div>
   </div>
@@ -406,7 +423,7 @@
       <div class="tl-item reveal">
         <div class="tl-num">④</div>
         <div class="tl-card">
-          <div class="tl-top"><div class="tl-title">Part 3. 행정 업무 시나리오 실습 (BYOD)</div><span class="tl-time">20분</span></div>
+          <div class="tl-top"><div class="tl-title">Part 3. 행정 업무 시나리오 실습</div><span class="tl-time">20분</span></div>
           <div class="tl-body">각자 휴대폰으로 실제 업무를 그대로 재현하는 핵심 세션입니다. 아래 실습 미션 참고 ↓</div>
           <div class="tl-hands">📱 개인 스마트폰 실습</div>
         </div>
@@ -481,6 +498,84 @@
   </div>
 </section>
 
+<!-- 배포자료 ② 예시 프롬프트 모음 -->
+<section class="block" id="prompt-lib">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">별첨 · 배포자료 ②</span>
+      <h2 class="sec-title">행정 특화 예시 프롬프트 모음</h2>
+      <p class="sec-desc">업무 유형별 대표 프롬프트 6종입니다. <strong>복사</strong> 버튼을 눌러 FactChat에 붙여넣고, <b>[대괄호]</b> 부분만 실제 내용으로 바꿔 바로 사용하세요.</p>
+    </div>
+    <div class="pl-grid">
+
+      <div class="pl-card reveal">
+        <div class="pl-head"><span class="pl-badge">A</span><span class="pl-em">📄</span><span class="pl-title">문서 작성</span></div>
+<div class="pl-body"><b class="k">[역할]</b> 당신은 용인시청 공보담당관실 주무관입니다.
+<b class="k">[맥락]</b> 아래 사업 내용을 시민 대상 보도자료로 작성합니다. 대상 독자는 40~60대 시민이며, 친근하지만 신뢰감 있는 어조를 사용합니다.
+<b class="k">[작업]</b> 다음 사업 내용을 800자 내외 보도자료로 작성해 주세요.
+<b class="k">[출력]</b> 제목(15자 내) / 부제 / 리드문 / 본문 3단락 / 문의처 순
+<b class="k">[근거]</b> 인용한 통계나 정책은 출처를 각주로 표기
+<b class="k">[사업내용]</b> (붙여넣기)</div>
+        <div class="pl-foot"><button type="button" class="pl-copy">복사</button></div>
+      </div>
+
+      <div class="pl-card reveal">
+        <div class="pl-head"><span class="pl-badge">B</span><span class="pl-em">⚖️</span><span class="pl-title">법령·조례 검토</span></div>
+<div class="pl-body">당신은 지방자치법과 조례 입안에 능통한 법제 전문가입니다.
+아래 조례안을 검토하고 다음을 표로 정리해 주세요.
+1) 상위법 저촉 여부 (근거 조항 명시)
+2) 타 지자체 유사 조례 3건 비교
+3) 예상 쟁점 및 보완 제안
+반드시 국가법령정보센터 링크와 함께 답변해 주세요.
+<b class="k">[조례안 원문]</b> (붙여넣기)</div>
+        <div class="pl-foot"><button type="button" class="pl-copy">복사</button></div>
+      </div>
+
+      <div class="pl-card reveal">
+        <div class="pl-head"><span class="pl-badge">C</span><span class="pl-em">📞</span><span class="pl-title">민원 답변</span></div>
+<div class="pl-body">당신은 공감 능력이 뛰어난 용인시청 민원 담당 주무관입니다.
+아래 민원에 대한 답변서를 작성하되,
+- 첫 문단은 민원인의 불편에 공감
+- 두 번째 문단은 관련 규정과 처리 절차 안내(근거 조항 포함)
+- 마지막 문단은 대안 제시 및 후속 안내
+- 존댓말, 딱딱하지 않은 행정 문체 사용
+<b class="k">[민원 내용]</b> (붙여넣기)</div>
+        <div class="pl-foot"><button type="button" class="pl-copy">복사</button></div>
+      </div>
+
+      <div class="pl-card reveal">
+        <div class="pl-head"><span class="pl-badge">D</span><span class="pl-em">📊</span><span class="pl-title">보고서·기획</span></div>
+<div class="pl-body">당신은 15년차 정책기획 전문가입니다.
+아래 주제로 국·과장 보고용 1페이지 요약 보고서를 작성해 주세요.
+구성: ①추진배경 ②현황·문제점 ③추진방안(3개) ④소요예산·일정 ⑤기대효과
+각 항목 3줄 이내, 개조식으로 작성.
+<b class="k">[주제]</b> (입력)</div>
+        <div class="pl-foot"><button type="button" class="pl-copy">복사</button></div>
+      </div>
+
+      <div class="pl-card reveal">
+        <div class="pl-head"><span class="pl-badge">E</span><span class="pl-em">🗂️</span><span class="pl-title">회의·업무 정리</span></div>
+<div class="pl-body">아래 회의록을 다음 형식으로 정리해 주세요.
+1) 핵심 결정사항 (불릿 5개 이내)
+2) 실행과제 표: [과제 | 담당부서 | 기한 | 우선순위]
+3) 다음 회의 안건 후보 3가지
+<b class="k">[회의록]</b> (붙여넣기)</div>
+        <div class="pl-foot"><button type="button" class="pl-copy">복사</button></div>
+      </div>
+
+      <div class="pl-card reveal">
+        <div class="pl-head"><span class="pl-badge">F</span><span class="pl-em">🔍</span><span class="pl-title">자료 조사·비교</span></div>
+<div class="pl-body">"2025년 기초지자체 AI 도입 우수사례"를 웹에서 검색하여 용인시가 벤치마킹할 만한 5개 사례를 표로 정리해 주세요.
+컬럼: [지자체 | 도입분야 | 도입시기 | 주요 성과 | 예산규모 | 출처URL]
+반드시 1차 출처(보도자료, 공식 발표) 링크 포함.</div>
+        <div class="pl-foot"><button type="button" class="pl-copy">복사</button></div>
+      </div>
+
+    </div>
+    <p class="dl-note">※ 더 많은 예시는 「행정 프롬프트 30선」 배포자료를 참고하세요. 답변의 법령·수치는 반드시 담당자가 최종 확인하세요.</p>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="wrap" id="cta">
   <div class="cta reveal">
@@ -508,6 +603,26 @@
   document.querySelectorAll('.reveal').forEach((el, i) => {
     el.style.transitionDelay = (i % 3) * 0.06 + 's';
     io.observe(el);
+  });
+
+  // 프롬프트 복사
+  document.querySelectorAll('.pl-copy').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const body = btn.closest('.pl-card').querySelector('.pl-body');
+      const text = body.innerText.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (_) {
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+      if (!btn.dataset.label) btn.dataset.label = btn.textContent;
+      btn.classList.add('done'); btn.textContent = '✓ 복사됨';
+      setTimeout(() => { btn.classList.remove('done'); btn.textContent = btn.dataset.label; }, 1600);
+    });
   });
 </script>
 </body>
