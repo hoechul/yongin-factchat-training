@@ -23,6 +23,8 @@
   /* top bar */
   .topbar { position:sticky; top:0; z-index:50; background:rgba(255,255,255,.85); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
   .topbar-inner { display:flex; align-items:center; justify-content:space-between; height:60px; }
+  .topbar-left { display:flex; align-items:center; gap:12px; }
+  .topbar-logo { height:30px; width:auto; display:block; }
   .back { display:inline-flex; align-items:center; gap:8px; font-weight:800; font-size:.92rem; color:var(--navy); }
   .back:hover { color:var(--blue); }
   .topbar .tag { font-size:.8rem; font-weight:700; color:var(--slate-2); }
@@ -88,7 +90,10 @@
 
 <div class="topbar">
   <div class="wrap topbar-inner">
-    <a class="back" href="../index.html">← FactChat 교육 페이지</a>
+    <div class="topbar-left">
+      <img class="topbar-logo" src="../LOGO02.png" alt="FactChat 로고" />
+      <a class="back" href="../index.html">← FactChat 교육 페이지</a>
+    </div>
     <span class="tag">Part 3 · 실습 미션</span>
   </div>
 </div>
