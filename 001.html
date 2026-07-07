@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>팩트챗 실습 워크북 — 용인시청 공무원용</title>
+<style>
+  :root{--navy:#1a3a5c;--blue:#2e6da4;--light:#eef4fa;--green:#2e7d32;--red:#c62828;--amber:#f9a825;}
+  *{box-sizing:border-box;}
+  body{font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif;margin:0;background:#f5f7fa;color:#2b2b2b;line-height:1.7;}
+  .wrap{max-width:900px;margin:0 auto;padding:24px 20px 60px;}
+  .brandbar{display:flex;align-items:center;margin-bottom:16px;}
+  .brand-logo{height:40px;width:auto;max-width:160px;object-fit:contain;display:block;}
+  @media (max-width:480px){.brand-logo{height:32px;max-width:130px;}}
+  header{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;border-radius:14px;padding:32px 28px;margin-bottom:28px;}
+  header h1{margin:0 0 8px;font-size:1.7em;}
+  header p{margin:0;opacity:.92;}
+  section{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+  h2{color:var(--navy);border-bottom:3px solid var(--blue);padding-bottom:8px;margin-top:0;font-size:1.3em;}
+  h3{color:var(--blue);margin:22px 0 8px;font-size:1.05em;}
+  table{width:100%;border-collapse:collapse;margin:12px 0;}
+  th{background:var(--navy);color:#fff;padding:9px 12px;text-align:left;}
+  td{border:1px solid #d8e0ea;padding:9px 12px;}
+  tr:nth-child(even) td{background:var(--light);}
+  .prompt{background:#263238;color:#e8f0e9;border-radius:8px;padding:14px 16px;font-size:.93em;white-space:pre-wrap;position:relative;margin:8px 0 14px;font-family:'Malgun Gothic',sans-serif;}
+  .prompt::before{content:"📋 복사용 프롬프트";display:block;color:#9fd6a4;font-size:.82em;margin-bottom:6px;font-weight:bold;}
+  .sample{background:#fff8e1;border-left:5px solid var(--amber);border-radius:0 8px 8px 0;padding:12px 16px;font-size:.93em;white-space:pre-wrap;margin:8px 0 14px;}
+  .sample::before{content:"▼ 실습용 예시 자료 (이어서 붙여넣기)";display:block;color:#8d6e00;font-size:.82em;margin-bottom:6px;font-weight:bold;}
+  .bad{background:#fdecea;border-left:5px solid var(--red);padding:10px 16px;border-radius:0 8px 8px 0;margin:8px 0;}
+  .good{background:#e8f5e9;border-left:5px solid var(--green);padding:10px 16px;border-radius:0 8px 8px 0;margin:8px 0;}
+  .tip{background:var(--light);border-left:5px solid var(--blue);padding:10px 16px;border-radius:0 8px 8px 0;margin:12px 0;}
+  .check{background:#e8f5e9;border-radius:8px;padding:12px 16px;margin-top:14px;}
+  .badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:.8em;font-weight:bold;color:#fff;margin-right:6px;}
+  .b-light{background:#66bb6a;} .b-heavy{background:#ef6c00;} .b-time{background:var(--blue);}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;}
+  .flow div{flex:1;min-width:150px;background:var(--light);border:1px solid #c9d8e8;border-radius:8px;padding:10px;text-align:center;font-size:.88em;}
+  ul{margin:8px 0;padding-left:22px;}
+  .cklist li{list-style:none;margin:4px 0;}
+  .cklist li::before{content:"☐ ";color:var(--green);font-weight:bold;}
+  footer{text-align:center;color:#888;font-size:.85em;margin-top:30px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="brandbar"><img src="LOGO02.png" alt="용인특례시" class="brand-logo"></div>
+
+<header>
+  <h1>📘 팩트챗 실습 워크북</h1>
+  <p>용인시청 공무원용 · 사례 중심 실습 가이드 · 총 소요시간 약 25분</p>
+  <p style="margin-top:8px;font-size:.9em;">각 사례: <b>상황 → 실습 순서 → 복사용 프롬프트 → 체크포인트</b>. 프롬프트 박스는 그대로 복사해 입력창에 붙여넣으세요.</p>
+</header>
+
+<section>
+  <h2>🧭 실습 전 준비 — 모델 선택 기준 (1분)</h2>
+  <table>
+    <tr><th>업무 유형</th><th>선택 모델</th><th>예시</th></tr>
+    <tr><td>요약 · 번역 · 정리 · 맞춤법</td><td><b>경량(기본) 모델</b></td><td>회의록 정리, 오탈자 교정</td></tr>
+    <tr><td>정책 분석 · 보고서 · 조례 검토</td><td><b>상위 모델</b></td><td>법령 충돌 검토, 논리 검증</td></tr>
+    <tr><td>이미지 · PPT · 복합 자동화</td><td><b>Super Agent</b></td><td>홍보물, 발표자료</td></tr>
+  </table>
+  <div class="tip">💰 단순 작업에 경량 모델만 써도 <b>크레딧 3~5배 절약</b>. 모델 전환은 대화 입력창의 <b>모델 선택</b> 버튼에서 합니다.</div>
+</section>
+
+<section>
+  <h2>📗 실습 1. 20쪽 정책보고서 다듬기 — 경량·상위 모델 나눠 쓰기 <span class="badge b-time">약 10분</span></h2>
+  <p><b>상황:</b> 상급자 보고 전 20쪽 보고서 초안을 다듬어야 합니다. 전 과정을 상위 모델로 돌리면 크레딧이 금방 소진됩니다. → 4단계로 나눠 <b>판단이 필요한 STEP 3에만 상위 모델</b>을 씁니다.</p>
+  <div class="flow">
+    <div><span class="badge b-light">경량</span><br>① 맞춤법·오탈자 교정</div>
+    <div><span class="badge b-light">경량</span><br>② 문단 구조 정리</div>
+    <div><span class="badge b-heavy">상위</span><br>③ 정책 논리 검토</div>
+    <div><span class="badge b-light">경량</span><br>④ 보고용 5줄 요약</div>
+  </div>
+
+  <h3><span class="badge b-light">경량</span>STEP 1 · 맞춤법·오탈자 교정</h3>
+  <div class="prompt">다음 보고서 초안의 맞춤법·오탈자·띄어쓰기만 교정해줘.
+내용과 문장 구조는 바꾸지 말고, 고친 부분은 표시해줘.</div>
+  <div class="sample">우리시 반려동물 등록두수는 최근 3년간 지속적으로 증가하고있으며, 이에따라 반려동물 놀이터 조성에 대한 시민 요구가 높아지고 있음. 현재 관내에는 전용 놀이터가 1개소 뿐이 없어 이용율이 매우 높고, 주말에는 혼잡이 심각한 상황임. 이에 신규 놀이터 2개소를 추가 조성하므로써 시민 편의를 재고하고자 함.</div>
+
+  <h3><span class="badge b-light">경량</span>STEP 2 · 문단 구조 정리 (같은 대화에서 이어서)</h3>
+  <div class="prompt">위 교정본을 「현황 → 문제점 → 개선방안 → 기대효과」 4단 구조로 문단을 재배치하고, 각 문단에 소제목을 붙여줘. 문장 표현은 그대로 유지해줘.</div>
+
+  <h3><span class="badge b-heavy">상위</span>STEP 3 · 정책 논리 검토 — ⚠️ 여기서 모델을 상위로 전환!</h3>
+  <div class="prompt">당신은 지방행정 정책 전문가입니다. 아래 「개선방안」이 상위 법령·조례와 충돌하지 않는지, 논리적 비약이나 근거 부족은 없는지 검토하고, 문제가 있으면 관련 법령·조례 조항과 함께 수정 의견을 제시해줘.</div>
+  <div class="sample">개선방안
+① 시 소유 유휴부지 2개소에 반려동물 놀이터를 신규 조성한다.
+② 조성비는 전액 시비로 충당하고, 운영은 인근 주민자치회에 위탁한다.
+③ 이용자는 반려동물 등록증 소지자로 제한하며, 미등록 이용 시 과태료 10만 원을 부과한다.</div>
+
+  <h3><span class="badge b-light">경량</span>STEP 4 · 보고용 요약 (모델을 다시 경량으로 전환)</h3>
+  <div class="prompt">위 최종 보고서를 상급자 보고용 5줄 요약으로 정리해줘. 핵심 수치는 그대로 살려줘.</div>
+
+  <div class="check">✅ <b>체크포인트:</b> 상위 모델은 전체의 약 1/5(STEP 3)에만 사용 → 크레딧 소모 <b>절반 이하</b>. STEP마다 모델 전환을 확인하세요. 과태료 조항(③)에 대해 AI가 상위법 근거 문제를 지적했는지 확인해 보세요.</div>
+</section>
+
+<section>
+  <h2>📙 실습 2. 주민 공고문 작성 — 프롬프트 3원칙 <span class="badge b-time">약 3분</span></h2>
+  <p><b>상황:</b> "공고문 써줘"처럼 막연히 요청하면 여러 번 재작성해야 합니다. → <b>①역할 ②맥락 ③근거</b>를 한 프롬프트에 담습니다.</p>
+  <div class="bad">✖ <b>나쁜 예:</b> 생활폐기물 무단투기 관련 공고문 써줘.</div>
+  <div class="good">✔ <b>좋은 예 — 3원칙 적용 (아래 복사)</b></div>
+  <div class="prompt">당신은 지방자치법과 폐기물관리법에 능통한 용인시청 자원순환과 주무관입니다. (①역할)
+「생활폐기물 무단투기 금지 및 과태료 부과」를 알리는 주민 대상 공고문을,
+65세 이상 어르신도 이해할 수 있게 쉬운 말로 500자 내외,
+공공기관 공고문 격식체(제목·본문·문의처 포함)로 작성해줘. (②맥락)
+무단투기 시 부과되는 과태료 근거 조항 번호와 출처 URL(law.go.kr)을
+본문 하단에 함께 표기해줘. (③근거)</div>
+  <div class="tip">🔁 <b>재사용:</b> 주제·독자·분량 부분만 바꾸면 됩니다. 예: 「불법 주정차 금지」, 「상수도 요금 감면 신청 안내」.</div>
+  <div class="check">✅ <b>체크포인트:</b> 답변에 붙은 조항 번호·URL은 <b>반드시 링크를 직접 열어</b> 원문과 대조 후 배포. 웹 검색을 켜면 최신 조례가 반영됩니다.</div>
+</section>
+
+<section>
+  <h2>📕 실습 3. 보도자료 초안 — C.R.E.A.T.E. 6요소 <span class="badge b-time">약 5분</span></h2>
+  <p><b>상황:</b> 필요한 정보를 빠뜨리면 톤·분량·근거가 제각각인 초안이 나옵니다. → 6요소를 한 번에 지정해 재작성 없이 완성합니다.</p>
+  <table>
+    <tr><th>요소</th><th>의미</th><th>예시</th></tr>
+    <tr><td><b>C</b>ontext</td><td>배경·상황</td><td>행사 계획서 첨부</td></tr>
+    <tr><td><b>R</b>ole</td><td>역할 지정</td><td>기획팀 주무관</td></tr>
+    <tr><td><b>E</b>xample</td><td>예시 제시</td><td>기존 문서 붙여넣기</td></tr>
+    <tr><td><b>A</b>ction</td><td>지시 동작</td><td>3문단·800자</td></tr>
+    <tr><td><b>T</b>one</td><td>톤·문체</td><td>보도자료 격식체</td></tr>
+    <tr><td><b>E</b>valuation</td><td>검증 요구</td><td>근거·출처 표기</td></tr>
+  </table>
+  <h3>STEP 1 · 근거 자료 붙여넣기</h3>
+  <div class="sample">· 행사명: 제5회 용인시민 걷기대회
+· 일시/장소: 2025. 7. 20.(일) 10:00 / 용인미르스타디움
+· 주최: 용인특례시 · 예상 참가: 2,000명(전년 1,500명 대비 33% 증가)
+· 프로그램: 5km 걷기, 건강측정 부스, 경품 추첨
+· 참가 신청: 2025. 7. 15.(화)까지 시 홈페이지 접수 · 문의: 체육진흥과 031-000-0000</div>
+  <h3>STEP 2 · 6요소 프롬프트 (이어서 입력)</h3>
+  <div class="prompt">당신은 용인시청 기획팀 주무관입니다. (R)
+위 행사 계획서를 바탕으로 (C·E)
+보도자료 초안을 제목·리드문·본문 3문단·문의처 형식, 800자 내외로 작성하되 (A)
+공공기관 보도자료 격식체로 써줘. (T)
+계획서에 없는 수치는 지어내지 말고, 인용한 참가자 수·증가율은 근거를 함께 표기해줘. (E)</div>
+  <div class="check">✅ <b>체크포인트:</b> 6요소가 부담되면 최소 <b>R(역할)·A(지시)·E(검증)</b> 3가지만이라도 지정. 결과가 아쉬우면 새로 묻지 말고 <b>"수정 재생성"</b>으로 톤·분량만 조정하세요.</div>
+</section>
+
+<section>
+  <h2>📘 실습 4. 긴 대화 분리 — 프로젝트로 컨텍스트 재사용 <span class="badge b-time">약 3분</span></h2>
+  <p><b>상황:</b> 보도자료를 20번 주고받은 대화에서 갑자기 "주차 조례 검토해줘"라고 하면, 앞의 모든 맥락이 딸려와 <b>크레딧이 급증</b>합니다.</p>
+  <h3>✔ ① 「조례 검토」 프로젝트를 만들고 지침에 저장</h3>
+  <div class="prompt">당신은 지방자치법·자치법규에 능통한 법제 담당자입니다.
+조례 검토 시 항상 ①상위법 충돌 여부 ②근거 조항 번호 ③출처 URL(law.go.kr)을 표로 정리해 답하세요.</div>
+  <h3>✔ ② 이후에는 검토 대상만 짧게 입력</h3>
+  <div class="prompt">「용인시 주차장 설치 및 관리 조례」 제3조를 검토해줘.</div>
+  <div class="check">✅ <b>체크포인트:</b> 지침은 한 번만 저장하면 프로젝트 내 모든 대화에 자동 적용 → 매번 역할·형식을 다시 쓸 필요가 없고 크레딧도 절약됩니다.</div>
+</section>
+
+<section>
+  <h2>📒 실습 5. 재활용 습관 — "수정 재생성" vs "새 대화" <span class="badge b-time">상시</span></h2>
+  <p><b>상황:</b> 답변이 거의 맞는데 일부만 아쉬울 때, 처음부터 다시 요청하면 크레딧이 두 배로 듭니다.</p>
+  <div class="good">✔ 같은 주제·부분 수정 → <b>「수정 재생성」</b> (예: "두 번째 문단만 더 공감형 톤으로")</div>
+  <div class="good">✔ 완전히 다른 업무 → <b>「새 대화」</b> 시작 (불필요한 맥락 차단)</div>
+</section>
+
+<section>
+  <h2>🎯 추가 응용 시나리오 (자율 실습)</h2>
+  <ul>
+    <li><b>보도자료 초안</b> 3분 만에 작성</li>
+    <li><b>조례안 요약</b> + 타 지자체 비교표 만들기</li>
+    <li><b>민원 답변서</b> 톤 조정 (딱딱 → 공감형)</li>
+    <li><b>회의록 → 실행과제</b> 목록 자동 정리</li>
+  </ul>
+</section>
+
+<section>
+  <h2>✅ 배포 전 신뢰도 체크리스트 (최종 필수)</h2>
+  <ul class="cklist">
+    <li>법령·조례 답변은 <b>조문 번호와 출처 URL</b> 확인</li>
+    <li><b>웹 검색</b>을 켜고 근거 링크를 직접 열어 교차 확인</li>
+    <li>수치·날짜·인명은 원문과 <b>한 번 더 대조</b></li>
+    <li>최종본은 담당자가 <b>사실관계·표현 최종 검수</b></li>
+  </ul>
+</section>
+
+<footer>용인시청 AI 역량강화 교육 · 팩트챗 실습 워크북</footer>
+</div>
+</body>
+</html>
