@@ -89,6 +89,10 @@
   .flow .fs .fn { font-size:7pt; font-weight:800; color:#fff; background:#1e5eff; width:15px; height:15px; border-radius:4px; display:inline-grid; place-items:center; }
   .flow .fs .fw { font-size:8.2pt; font-weight:800; color:#0b1f4d; margin-top:3px; }
   .flow .fs .fd { font-size:7.2pt; color:#5b6b85; margin-top:2px; line-height:1.3; }
+  .sample { background:#f2f5fb; border:1px dashed #b9c7e0; border-radius:7px; padding:7px 9px; font-size:7.7pt; line-height:1.5; color:#3c4a63; margin-top:3px; }
+  .sample .sh { display:block; font-size:7pt; font-weight:800; color:#5b6b85; letter-spacing:.2px; margin-bottom:3px; }
+  .sample .er { color:#c02626; font-weight:700; text-decoration:underline; text-underline-offset:2px; }
+  .sample b { color:#12327a; }
 </style>
 </head>
 <body>
@@ -178,7 +182,7 @@
   <!-- ===== 상세 실습 케이스 (따라 하기) ===== -->
   <div class="page2">
     <header>
-      <div class="title">바로 따라 하는 실습 케이스<small>앞의 📌 예시 2가지를 실제 작업 순서대로 · 프롬프트를 그대로 복사해 사용하세요</small></div>
+      <div class="title">바로 따라 하는 실습 케이스<small>앞의 📌 예시 3가지를 실제 작업 순서대로 · 예시 자료와 프롬프트를 그대로 복사해 사용하세요</small></div>
       <div class="badge">따라 하기 가이드</div>
     </header>
 
@@ -200,14 +204,16 @@
           <div class="fs"><span class="fn">4</span> <span class="tag t-light">경량</span><div class="fw">보고용 요약</div><div class="fd">5줄 핵심 정리</div></div>
         </div>
 
-        <div class="lb" style="margin-top:8px;">STEP 1 · <span class="tag t-light">경량 모델</span> 맞춤법·오탈자 교정</div>
-        <div class="promptbox">다음 보고서 초안의 <b>맞춤법·오탈자·띄어쓰기만</b> 교정해줘. <b>내용과 문장 구조는 바꾸지 말고</b>, 고친 부분은 표시해줘.<br>[<span class="br">보고서 본문 전체 붙여넣기</span>]</div>
+        <div class="lb" style="margin-top:8px;">STEP 1 · <span class="tag t-light">경량 모델</span> 맞춤법·오탈자 교정 <span style="font-weight:600;color:#5b6b85;">(아래 예시 자료 그대로 복사해 실습)</span></div>
+        <div class="promptbox">다음 보고서 초안의 <b>맞춤법·오탈자·띄어쓰기만</b> 교정해줘. <b>내용과 문장 구조는 바꾸지 말고</b>, 고친 부분은 표시해줘.</div>
+        <div class="sample"><span class="sh">▼ 실습용 예시 본문 (프롬프트 아래에 이어서 붙여넣기 · 빨간 밑줄이 일부러 넣은 오류)</span>우리시 반려동물 등록두수는 최근 3년간 지속적으로 <span class="er">증가하고있으며</span>, <span class="er">이에따라</span> 반려동물 놀이터 조성에 <span class="er">대한</span> 시민 요구가 높아지고 있음. 현재 관내에는 전용 놀이터가 1개소 <span class="er">뿐이 없어</span> <span class="er">이용율</span>이 매우 높고, 주말에는 혼잡이 심각한 상황임. 이에 신규 놀이터 2개소를 추가 <span class="er">조성하므로써</span> 시민 편의를 <span class="er">재고</span>하고자 함.</div>
 
         <div class="lb" style="margin-top:7px;">STEP 2 · <span class="tag t-light">경량 모델</span> 문단 구조 정리</div>
         <div class="promptbox">위 교정본을 <b>「현황 → 문제점 → 개선방안 → 기대효과」 4단 구조</b>로 문단을 재배치하고, 각 문단에 <b>소제목</b>을 붙여줘. 문장 표현은 그대로 유지해줘.</div>
 
         <div class="lb" style="margin-top:7px;">STEP 3 · <span class="tag t-mid">상위 모델</span> 정책 논리 검토 <span style="font-weight:600;color:#c02626;">(여기서만 상위 모델 사용)</span></div>
-        <div class="promptbox">당신은 <b>지방행정 정책 전문가</b>입니다. 아래 <b>「개선방안」</b> 부분이 <b>상위 법령·조례와 충돌하지 않는지</b>, 논리적 비약이나 근거 부족은 없는지 검토하고, 문제가 있으면 <b>관련 조항과 함께 수정 의견</b>을 제시해줘.<br>[<span class="br">개선방안 문단만 붙여넣기</span>]</div>
+        <div class="promptbox">당신은 <b>지방행정 정책 전문가</b>입니다. 아래 <b>「개선방안」</b>이 <b>상위 법령·조례와 충돌하지 않는지</b>, 논리적 비약이나 근거 부족은 없는지 검토하고, 문제가 있으면 <b>관련 법령·조례 조항과 함께 수정 의견</b>을 제시해줘.</div>
+        <div class="sample"><span class="sh">▼ 실습용 예시 개선방안 (프롬프트 아래에 이어서 붙여넣기)</span>개선방안 ① 시 소유 유휴부지 2개소에 반려동물 놀이터를 신규 조성한다. ② 조성비는 전액 시비로 충당하고, 운영은 인근 주민자치회에 <b>위탁</b>한다. ③ 이용자는 반려동물 등록증 소지자로 제한하며, 미등록 이용 시 <b>과태료 10만 원</b>을 부과한다.</div>
 
         <div class="lb" style="margin-top:7px;">STEP 4 · <span class="tag t-light">경량 모델</span> 보고용 요약</div>
         <div class="promptbox">위 최종 보고서를 <b>상급자 보고용 5줄 요약</b>으로 정리해줘. 핵심 수치는 그대로 살려줘.</div>
@@ -241,10 +247,11 @@
         </div>
 
         <div class="lb" style="margin-top:8px;">✖ 이렇게 쓰면 (막연한 요청)</div>
-        <div class="promptbox" style="background:#3a1414;color:#ffd9d9;">폐기물 무단투기 관련 <b style="color:#ff9d9d;">공고문 써줘.</b></div>
+        <div class="promptbox" style="background:#3a1414;color:#ffd9d9;">생활폐기물 무단투기 관련 <b style="color:#ff9d9d;">공고문 써줘.</b></div>
 
-        <div class="lb" style="margin-top:7px;">✔ 이렇게 쓰세요 · 복사해서 사용 (3원칙 적용)</div>
-        <div class="promptbox">당신은 <b>지방자치법에 능통한 행정 전문가</b>입니다.(①역할) <b>[생활폐기물 무단투기 금지]</b>를 알리는 <b>주민 대상 공고문</b>을, 노년층도 이해하기 <b>쉬운 말로 500자 내외</b>, <b>공공기관 공고문 격식체</b>로 작성해줘.(②맥락) 인용한 <b>조례 조항 번호와 출처 URL(law.go.kr)</b>을 함께 표기해줘.(③근거)</div>
+        <div class="lb" style="margin-top:7px;">✔ 이렇게 쓰세요 · 아래를 그대로 복사해 입력 (3원칙 적용)</div>
+        <div class="promptbox">당신은 <b>지방자치법과 폐기물관리법에 능통한 용인시청 자원순환과 주무관</b>입니다.(①역할) <b>「생활폐기물 무단투기 금지 및 과태료 부과」</b>를 알리는 <b>주민 대상 공고문</b>을, 65세 이상 어르신도 이해할 수 있게 <b>쉬운 말로 500자 내외</b>, <b>공공기관 공고문 격식체(제목·본문·문의처 포함)</b>로 작성해줘.(②맥락) 무단투기 시 부과되는 <b>과태료 근거 조항 번호</b>와 <b>출처 URL(law.go.kr)</b>을 본문 하단에 함께 표기해줘.(③근거)</div>
+        <div class="tip" style="color:#0a7b45;background:#eefaf3;border-color:#bfe6cf;">↳ 다른 안건에 재사용하려면 <b style="color:#0a7b45;">굵게 표시된 주제·독자·분량·근거</b> 부분만 바꾸면 됩니다. 예: <b style="color:#0a7b45;">「불법 주정차 금지」</b>, <b style="color:#0a7b45;">「상수도 요금 감면 신청 안내」</b> 등.</div>
 
         <div class="result">
           <div class="rh">✔ 결과</div>
@@ -253,7 +260,7 @@
             <li>조항·출처가 붙어 <b>사실 확인이 쉽고</b> 신뢰도가 높아 <b>재작성이 거의 필요 없음</b></li>
           </ul>
         </div>
-        <div class="tip">💡 <b>Tip</b> — <b>[대괄호]</b> 부분만 실제 안건으로 바꾸면 다른 공고문에도 그대로 재사용할 수 있습니다. 근거가 붙은 답변은 <b>링크를 직접 열어</b> 조문 원문과 한 번 더 대조하세요.</div>
+        <div class="tip">💡 <b>Tip</b> — 근거(조항·URL)가 붙은 답변은 반드시 <b>링크를 직접 열어</b> 조문 원문과 한 번 더 대조한 뒤 배포하세요. 웹 검색을 켜면 최신 조례까지 반영됩니다.</div>
       </div>
     </div>
 
@@ -277,11 +284,11 @@
           <div class="step"><div class="L">E</div><div class="w">Evaluation</div><div class="d">통계 출처 URL</div></div>
         </div>
 
-        <div class="lb" style="margin-top:8px;">STEP 1 · 회의 자료 첨부 <span style="font-weight:600;color:#5b6b85;">(파일 업로드 또는 본문 붙여넣기)</span></div>
-        <div class="situ" style="margin-bottom:6px;">보도자료의 근거가 될 <b>회의록·행사 계획서·통계 자료</b>를 대화에 먼저 첨부하거나 붙여넣습니다. (Context·Example)</div>
+        <div class="lb" style="margin-top:8px;">STEP 1 · 근거 자료 붙여넣기 <span style="font-weight:600;color:#5b6b85;">(아래 예시 계획서 그대로 복사해 실습)</span></div>
+        <div class="sample"><span class="sh">▼ 실습용 예시 행사 계획서 (대화에 먼저 붙여넣기)</span>· 행사명: 제5회 용인시민 걷기대회<br>· 일시/장소: 2025. 7. 20.(일) 10:00 / 용인미르스타디움<br>· 주최: 용인특례시 &nbsp;·&nbsp; 예상 참가: <b>2,000명</b>(전년 1,500명 대비 <b>33% 증가</b>)<br>· 프로그램: 5km 걷기, 건강측정 부스, 경품 추첨<br>· 참가 신청: 2025. 7. 15.(화)까지 시 홈페이지 접수 &nbsp;·&nbsp; 문의: 체육진흥과 031-000-0000</div>
 
-        <div class="lb">STEP 2 · 6요소 프롬프트 · 복사해서 사용</div>
-        <div class="promptbox">당신은 <b>용인시청 기획팀 주무관</b>입니다.(R·역할) <b>첨부한 회의 내용</b>을 바탕으로(C·E·맥락/예시) <b>보도자료 초안</b>을 <b>제목·리드문·본문 3문단·문의처</b> 형식, <b>800자 내외</b>로 작성하되(A·지시), <b>공공기관 보도자료 격식체</b>로 써줘.(T·톤) 인용한 <b>통계·수치는 출처 URL</b>을 함께 표기해줘.(E·검증)</div>
+        <div class="lb" style="margin-top:7px;">STEP 2 · 6요소 프롬프트 · 위 자료에 이어서 복사해 입력</div>
+        <div class="promptbox">당신은 <b>용인시청 기획팀 주무관</b>입니다.(R·역할) <b>위 행사 계획서</b>를 바탕으로(C·E·맥락/예시) <b>보도자료 초안</b>을 <b>제목·리드문·본문 3문단·문의처</b> 형식, <b>800자 내외</b>로 작성하되(A·지시), <b>공공기관 보도자료 격식체</b>로 써줘.(T·톤) 계획서에 없는 수치는 지어내지 말고, 인용한 <b>참가자 수·증가율은 근거를 함께</b> 표기해줘.(E·검증)</div>
 
         <div class="result">
           <div class="rh">✔ 결과</div>
