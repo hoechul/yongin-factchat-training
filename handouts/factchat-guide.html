@@ -22,6 +22,9 @@
   header .title small { display:block; font-size: 8pt; font-weight:500; color:#c7d8ff; margin-top:2px; letter-spacing:0; }
   header .badge { font-size: 7.5pt; font-weight:700; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.3); padding:5px 10px; border-radius:999px; }
   .cols { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+  .stack { display:flex; flex-direction:column; gap: 10px; margin-top: 10px; }
+  .stack .card, .card.full { width:100%; }
+  .card { break-inside: avoid; page-break-inside: avoid; }
   .card { border:1px solid #dbe3f0; border-radius:9px; padding:10px 12px; background:#fff; }
   .card.full { grid-column: 1 / -1; }
   .card h2 { font-size: 10.5pt; color:#0b1f4d; display:flex; align-items:center; gap:6px; margin-bottom:7px; }
@@ -95,7 +98,7 @@
     <div class="badge">데스크 레퍼런스 v1</div>
   </header>
 
-  <div class="cols">
+  <div class="stack">
     <!-- 모델 선택 전략 -->
     <div class="card">
       <h2><span class="n">1</span> 크레딧을 아끼는 모델 선택 전략</h2>
