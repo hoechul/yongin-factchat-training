@@ -3,53 +3,108 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>팩트챗 실습 워크북 — 용인시청 공무원용</title>
+<title>크레딧을 아끼는 스마트한 사용법 — 용인시청 FactChat 교육</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
 <style>
-  :root{--navy:#1a3a5c;--blue:#2e6da4;--light:#eef4fa;--green:#2e7d32;--red:#c62828;--amber:#f9a825;}
-  *{box-sizing:border-box;}
-  body{font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif;margin:0;background:#f5f7fa;color:#2b2b2b;line-height:1.7;}
-  .wrap{max-width:900px;margin:0 auto;padding:24px 20px 60px;}
-  .brandbar{display:flex;align-items:center;margin-bottom:16px;}
-  .brand-logo{height:40px;width:auto;max-width:160px;object-fit:contain;display:block;}
-  @media (max-width:480px){.brand-logo{height:32px;max-width:130px;}}
-  header{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;border-radius:14px;padding:32px 28px;margin-bottom:28px;}
-  header h1{margin:0 0 8px;font-size:1.7em;}
-  header p{margin:0;opacity:.92;}
-  section{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,.06);}
-  h2{color:var(--navy);border-bottom:3px solid var(--blue);padding-bottom:8px;margin-top:0;font-size:1.3em;}
-  h3{color:var(--blue);margin:22px 0 8px;font-size:1.05em;}
-  table{width:100%;border-collapse:collapse;margin:12px 0;}
-  th{background:var(--navy);color:#fff;padding:9px 12px;text-align:left;}
-  td{border:1px solid #d8e0ea;padding:9px 12px;}
-  tr:nth-child(even) td{background:var(--light);}
-  .prompt{background:#263238;color:#e8f0e9;border-radius:8px;padding:14px 16px;font-size:.93em;white-space:pre-wrap;position:relative;margin:8px 0 14px;font-family:'Malgun Gothic',sans-serif;}
-  .prompt::before{content:"📋 복사용 프롬프트";display:block;color:#9fd6a4;font-size:.82em;margin-bottom:6px;font-weight:bold;}
-  .sample{background:#fff8e1;border-left:5px solid var(--amber);border-radius:0 8px 8px 0;padding:12px 16px;font-size:.93em;white-space:pre-wrap;margin:8px 0 14px;}
-  .sample::before{content:"▼ 실습용 예시 자료 (이어서 붙여넣기)";display:block;color:#8d6e00;font-size:.82em;margin-bottom:6px;font-weight:bold;}
-  .bad{background:#fdecea;border-left:5px solid var(--red);padding:10px 16px;border-radius:0 8px 8px 0;margin:8px 0;}
-  .good{background:#e8f5e9;border-left:5px solid var(--green);padding:10px 16px;border-radius:0 8px 8px 0;margin:8px 0;}
-  .tip{background:var(--light);border-left:5px solid var(--blue);padding:10px 16px;border-radius:0 8px 8px 0;margin:12px 0;}
-  .check{background:#e8f5e9;border-radius:8px;padding:12px 16px;margin-top:14px;}
-  .badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:.8em;font-weight:bold;color:#fff;margin-right:6px;}
-  .b-light{background:#66bb6a;} .b-heavy{background:#ef6c00;} .b-time{background:var(--blue);}
-  .flow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;}
-  .flow div{flex:1;min-width:150px;background:var(--light);border:1px solid #c9d8e8;border-radius:8px;padding:10px;text-align:center;font-size:.88em;}
-  ul{margin:8px 0;padding-left:22px;}
-  .cklist li{list-style:none;margin:4px 0;}
-  .cklist li::before{content:"☐ ";color:var(--green);font-weight:bold;}
-  footer{text-align:center;color:#888;font-size:.85em;margin-top:30px;}
+  :root{
+    --navy:#0b1f4d; --navy-2:#12327a; --blue:#1e5eff; --blue-soft:#eaf0ff;
+    --sky:#38bdf8; --ink:#0f172a; --slate:#475569; --slate-2:#64748b;
+    --line:#e2e8f0; --bg:#f6f8fc; --white:#ffffff;
+    --amber:#f59e0b; --green:#10b981; --red:#e11d48;
+    --radius:18px;
+    --shadow-md:0 10px 40px rgba(11,31,77,.10);
+    --maxw:900px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  a{color:inherit;text-decoration:none;}
+
+  /* Nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-logo{display:block;width:auto;height:38px;max-width:150px;object-fit:contain;}
+  .brand-txt{font-weight:900;font-size:1.02rem;color:var(--navy);padding-left:12px;border-left:1px solid var(--line);letter-spacing:-.2px;}
+  .nav-cta{background:var(--navy);color:#fff;padding:9px 18px;border-radius:999px;font-size:.86rem;font-weight:700;transition:transform .15s,background .15s;}
+  .nav-cta:hover{background:var(--blue);transform:translateY(-1px);}
+  @media(max-width:480px){.brand-txt{font-size:.86rem;padding-left:9px;}.brand-logo{height:32px;max-width:120px;}}
+
+  /* Hero */
+  .hero{position:relative;overflow:hidden;color:#fff;padding:60px 0 68px;
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(56,189,248,.25), transparent 60%),
+      radial-gradient(900px 500px at 10% 10%, rgba(30,94,255,.28), transparent 55%),
+      linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 55%, #1b3aa0 100%);}
+  .hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:26px 26px;opacity:.5;pointer-events:none;}
+  .hero .wrap{position:relative;z-index:2;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:8px 16px;border-radius:999px;font-size:.82rem;font-weight:600;backdrop-filter:blur(4px);}
+  .eyebrow .pip{width:7px;height:7px;border-radius:50%;background:var(--sky);box-shadow:0 0 12px var(--sky);}
+  .hero h1{margin:22px 0 16px;font-size:clamp(1.9rem,4.6vw,3rem);font-weight:900;line-height:1.18;letter-spacing:-.02em;}
+  .hero h1 .accent{background:linear-gradient(120deg,#7dd3fc,#c7d8ff);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero-sub{font-size:clamp(1rem,2.2vw,1.2rem);font-weight:500;color:#d5def7;}
+  .hero-sub strong{color:#fff;font-weight:700;}
+  .hero-note{margin-top:14px;font-size:.92rem;color:#a9bbe8;max-width:640px;}
+  .hero-note b{color:#e2ebff;}
+
+  /* Content */
+  .content{padding:44px 24px 30px;}
+  section{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:28px 30px;margin-bottom:22px;box-shadow:var(--shadow-md);}
+  h2{color:var(--navy);font-weight:900;font-size:1.28em;letter-spacing:-.01em;margin:0 0 14px;padding-bottom:12px;border-bottom:2px solid var(--line);display:flex;align-items:center;flex-wrap:wrap;gap:8px;}
+  h3{color:var(--blue);font-weight:800;margin:22px 0 8px;font-size:1.02em;display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
+  p{color:var(--slate);}
+  p b{color:var(--navy-2);}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95em;}
+  th{background:var(--navy);color:#fff;padding:10px 13px;text-align:left;font-weight:700;}
+  th:first-child{border-top-left-radius:10px;} th:last-child{border-top-right-radius:10px;}
+  td{border-bottom:1px solid var(--line);padding:9px 13px;color:var(--slate);}
+  td b{color:var(--navy-2);}
+  tr:nth-child(even) td{background:#f8fafd;}
+  .prompt{background:var(--navy);color:#dbe4ff;border-radius:12px;padding:15px 17px;font-size:.92em;white-space:pre-wrap;position:relative;margin:8px 0 14px;line-height:1.6;}
+  .prompt::before{content:"📋 복사용 프롬프트";display:block;color:#7dd3fc;font-size:.8em;margin-bottom:7px;font-weight:800;}
+  .prompt b{color:#7dd3fc;}
+  .sample{background:#fff8e6;border:1px solid #ffe3a3;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;padding:12px 16px;font-size:.92em;white-space:pre-wrap;margin:8px 0 14px;color:#6b5300;}
+  .sample::before{content:"▼ 실습용 예시 자료 (이어서 붙여넣기)";display:block;color:#9a6700;font-size:.8em;margin-bottom:6px;font-weight:800;}
+  .bad{background:#fef2f2;border-left:4px solid var(--red);padding:11px 16px;border-radius:0 10px 10px 0;margin:8px 0;color:#7a1d2b;}
+  .good{background:#ecfdf5;border-left:4px solid var(--green);padding:11px 16px;border-radius:0 10px 10px 0;margin:8px 0;color:#065f46;}
+  .tip{background:var(--blue-soft);border-left:4px solid var(--blue);padding:11px 16px;border-radius:0 10px 10px 0;margin:12px 0;color:var(--navy-2);}
+  .check{background:#ecfdf5;border:1px solid #bbf7d0;border-radius:12px;padding:13px 16px;margin-top:14px;color:#065f46;}
+  .check b{color:#047857;}
+  .badge{display:inline-block;padding:3px 11px;border-radius:999px;font-size:.72em;font-weight:800;color:#fff;margin-right:6px;vertical-align:middle;}
+  .b-light{background:var(--green);} .b-heavy{background:var(--amber);} .b-time{background:var(--blue);}
+  .flow{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0;}
+  .flow div{flex:1;min-width:150px;background:var(--blue-soft);border:1px solid #cfe0ff;border-radius:12px;padding:12px;text-align:center;font-size:.88em;color:var(--navy-2);font-weight:600;}
+  ul{margin:8px 0;padding-left:22px;color:var(--slate);}
+  li{margin:4px 0;}
+  li b{color:var(--navy-2);}
+  .cklist{padding-left:0;}
+  .cklist li{list-style:none;margin:6px 0;}
+  .cklist li::before{content:"☑ ";color:var(--green);font-weight:900;}
+  .site-footer{border-top:1px solid var(--line);background:#fff;}
+  .site-footer .wrap{text-align:center;color:var(--slate-2);font-size:.85em;padding:22px 24px;}
 </style>
 </head>
 <body>
-<div class="wrap">
+<nav>
+  <div class="wrap nav-inner">
+    <a href="/" class="brand"><img src="LOGO02.png" alt="용인특례시" class="brand-logo"><span class="brand-txt">FactChat 역량강화 교육</span></a>
+    <a href="/" class="nav-cta">← 교육 홈</a>
+  </div>
+</nav>
 
-<div class="brandbar"><img src="LOGO02.png" alt="용인특례시" class="brand-logo"></div>
-
-<header>
-  <h1>📘 팩트챗 실습 워크북</h1>
-  <p>용인시청 공무원용 · 사례 중심 실습 가이드 · 총 소요시간 약 25분</p>
-  <p style="margin-top:8px;font-size:.9em;">각 사례: <b>상황 → 실습 순서 → 복사용 프롬프트 → 체크포인트</b>. 프롬프트 박스는 그대로 복사해 입력창에 붙여넣으세요.</p>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="pip"></span>Part 1 · 실습 워크북</div>
+    <h1>크레딧을 아끼는 <span class="accent">스마트한 사용법</span></h1>
+    <p class="hero-sub">용인시청 공무원용 · 사례 중심 실습 가이드 · 총 소요시간 약 <strong>25분</strong></p>
+    <p class="hero-note">각 사례: <b>상황 → 실습 순서 → 복사용 프롬프트 → 체크포인트</b>. 프롬프트 박스는 그대로 복사해 입력창에 붙여넣으세요.</p>
+  </div>
 </header>
+
+<main class="wrap content">
 
 <section>
   <h2>🧭 실습 전 준비 — 모델 선택 기준 (1분)</h2>
@@ -173,7 +228,7 @@
   </ul>
 </section>
 
-<footer>용인시청 AI 역량강화 교육 · 팩트챗 실습 워크북</footer>
-</div>
+</main>
+<footer class="site-footer"><div class="wrap">용인시청 AI 역량강화 교육 · 크레딧을 아끼는 스마트한 사용법</div></footer>
 </body>
 </html>
